@@ -183,6 +183,13 @@ def place_battleship()
                             "J1", "J2", "J3", "J4", "J5", "J6",
                             "K1", "K2", "K3", "K4", "K5", "K6"]
 
+    valid_options_v =      ["A1", "A2", "A3", "A4", "A5", "A6", "A8", "A9", "A10",
+                            "B1", "B2", "B3", "B4", "B5", "B6", "B8", "B9", "B10",
+                            "C1", "C2", "C3", "C4", "C5", "C6", "C8", "C9", "C10",
+                            "D1", "D2", "D3", "D4", "D5", "D6", "D8", "D9", "D10",
+                            "E1", "E2", "E3", "E4", "E5", "E6", "E8", "E9", "E10",
+                            "F1", "F2", "F3", "F4", "F5", "F6", "F8", "F9", "F10"]
+
     puts "Time to position the Carrier! Do you want to position it horizontally ('H') or vertically ('V')?   "
 
     orientation = "h"
@@ -209,7 +216,12 @@ def place_battleship()
     
     while !valid_options_h.include?(aircraft_carrier_s)
         puts "Oops! That grid reference was either invalid or did not allow enough space for the Carrier. Try again: "
-        aircraft_carrier_s = gets.chomp
+        aircraft_carrier_s = gets.chomp.upcase
+    end 
+
+    while !valid_options_v.include?(aircraft_carrier_s)
+        puts "Oops! That grid reference was either invalid or did not allow enough space for the Carrier. Try again: "
+        aircraft_carrier_s = gets.chomp.upcase
     end 
   
     if orientation == "H"
