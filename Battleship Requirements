@@ -1,0 +1,33 @@
+
+DESIGN BRIEF
+
+- Battleship game involves two players (the user and the computer, or potentially another user) on a 10 x 10 grid.
+- A grid can 
+- Both the user and the computer need to choose where to place their ships on their grid.
+- Players take it in 
+- The objetive of the game is
+
+FEATURES REQUIRED AND ASSOCIATED METHODS
+
+Setup:
+
+- Build grid (show x and y axis and create space for values to be displayed)
+- User to position their fleet on their grid
+- Computer to select one of list of pre-determined grids for user to play against
+- Computer to randomly populate grid with fleet as advanced feature
+- Show home and enemy fleets simultaneously
+
+Gaming:
+
+- Fire method
+- Back and forth playing
+- Determine hit or miss
+- Potential sound effect or visual effect on hit
+- Determine winner
+
+Other features:
+
+- User to login to create user name
+- Running score - hits scored / targets remaining for both user and computer
+- Best of three rounds 
+- Cheat for showing up enemy grid (Codebreakers!)
