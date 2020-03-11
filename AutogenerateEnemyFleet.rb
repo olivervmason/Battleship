@@ -1,18 +1,18 @@
 # Welcome - this requires the user to idenfify themselves
-def user_login()
-    print "PLEASE IDENTIFY YOURSELF: "
-    user_name = gets.chomp.upcase
+# def user_login()
+#     print "PLEASE IDENTIFY YOURSELF: "
+#     user_name = gets.chomp.upcase
 
-    print "Welcome to the bridge Admiral #{user_name}. \nPlease enter your authorization code to commence operations: "
-    authorization_code = gets.chomp.downcase
+#     print "Welcome to the bridge Admiral #{user_name}. \nPlease enter your authorization code to commence operations: "
+#     authorization_code = gets.chomp.downcase
 
-    while authorization_code != "alan turing"
-        puts "Wrong code - access denied. \nHint: the password is the name of the man whose computer broke the Enigma code."
-        authorization_code = gets.chomp.downcase
-    end
-end
+#     while authorization_code != "alan turing"
+#         puts "Wrong code - access denied. \nHint: the password is the name of the man whose computer broke the Enigma code."
+#         authorization_code = gets.chomp.downcase
+#     end
+# end
 
-user_login()
+# user_login()
 
 # This Method is for the basic grid on which information will be displayed to the user. Each grid square contains a value to be determined elsewhere.
 
@@ -182,6 +182,24 @@ REFERENCE_HASH = {
 # A
 # A
 
+def h_or_v()                              # This method is to give the computer a binary choice for orientating each of its ships
+    h_choice = rand(0..1)
+    if h_choice == 0
+        return "H"
+    else
+        return "V"
+    end
+end
+
+# orientation = h_or_v
+
+def rand_gr()                               # This method selects a random grid alpha numberic reference. This will be used by the computer to place its ships and to fire on the enemy,
+    array_choice = REFERENCE_HASH.to_a
+    guess = rand(0..99)
+    return array_choice[guess][0]
+end
+
+
 def place_carrier()
 
     # There is no space to position the Carrier horizontally outside squares A1 to J6 (inclusive)
@@ -205,9 +223,9 @@ def place_carrier()
                             "E1", "E2", "E3", "E4", "E5", "E6", "E8", "E9", "E10",
                             "F1", "F2", "F3", "F4", "F5", "F6", "F8", "F9", "F10"]
 
-    puts "Time to position the Carrier! Do you want to position it horizontally ('H') or vertically ('V')?   "
+    # puts "Time to position the Carrier! Do you want to position it horizontally ('H') or vertically ('V')?   "
 
-    orientation = gets.chomp.upcase
+    orientation = h_or_v()
     valid_orientation = nil
 
     if orientation == "H" || orientation == "V"
@@ -218,27 +236,27 @@ def place_carrier()
 
     while valid_orientation == false
         print "Please select a valid orientation ('H' or 'V'):" 
-        orientation = gets.chomp.upcase
+        orientation = h_or_v()
         if orientation == "H" || orientation =="V"
             valid_orientation = true
         end
     end
 
-    puts "Which grid reference is the starting point for the carrier? (Remember it needs 5 squares of space!)"
-    aircraft_carrier_s = gets.chomp.upcase
+    # puts "Which grid reference is the starting point for the carrier? (Remember it needs 5 squares of space!)"
+    aircraft_carrier_s = rand_gr()
     
 
     if orientation == "H"
         while !valid_options_h.include?(aircraft_carrier_s)
             puts "Oops! That grid reference was either invalid or did not allow enough space for the Carrier. Try again: "
-            aircraft_carrier_s = gets.chomp.upcase
+            aircraft_carrier_s = rand_gr()
         end 
     end
 
     if orientation == "V"
         while !valid_options_v.include?(aircraft_carrier_s)
             puts "Oops! That grid reference was either invalid or did not allow enough space for the Carrier. Try again: "
-            aircraft_carrier_s = gets.chomp.upcase
+            aircraft_carrier_s = rand_gr()
         end 
     end
       
@@ -286,9 +304,9 @@ def place_destroyer()
                             "F1", "F2", "F3", "F4", "F5", "F6", "F8", "F9", "F10",
                             "G1", "G2", "G3", "G4", "G5", "G6", "G8", "G9", "G10"]
 
-    puts "Time to position the Destoyers! Do you want to position this one horizontally ('H') or vertically ('V')?   "
+    # puts "Time to position the Destoyers! Do you want to position this one horizontally ('H') or vertically ('V')?   "
 
-    orientation = gets.chomp.upcase
+    orientation = h_or_v()
     valid_orientation = nil
 
     if orientation == "H" || orientation == "V"
@@ -299,42 +317,42 @@ def place_destroyer()
 
     while valid_orientation == false
         print "Please select a valid orientation ('H' or 'V'):" 
-        orientation = gets.chomp.upcase
+        orientation = h_or_v()
         if orientation == "H" || orientation =="V"
             valid_orientation = true
         end
     end
 
-    puts "Which grid reference is the starting point for this destroyer? (Remember it needs 4 squares of space!)"
-    destroyer_s = gets.chomp.upcase
+    # puts "Which grid reference is the starting point for this destroyer? (Remember it needs 4 squares of space!)"
+    destroyer_s = rand_gr()
 
 # Error validation starts:
 
     if orientation == "H"
         while  $b_g[REFERENCE_HASH[destroyer_s]] != " " || $b_g[REFERENCE_HASH[destroyer_s]+1] != " " || $b_g[REFERENCE_HASH[destroyer_s]+2] != " " || $b_g[REFERENCE_HASH[destroyer_s]+3] != " "    
-                puts "Oops! One of those grid references is already taken. Please try again."
-                destroyer_s = gets.chomp.upcase
+                # puts "Oops! One of those grid references is already taken. Please try again."
+                destroyer_s = rand_gr()
         end
     end
 
     if orientation == "V"
         while  $b_g[REFERENCE_HASH[destroyer_s]] != " " || $b_g[REFERENCE_HASH[destroyer_s]+10] != " " || $b_g[REFERENCE_HASH[destroyer_s]+20] != " " || $b_g[REFERENCE_HASH[destroyer_s]+30] != " "    
-                puts "Oops! One of those grid references is already taken. Please try again."
-                destroyer_s = gets.chomp.upcase
+                # puts "Oops! One of those grid references is already taken. Please try again."
+                destroyer_s = rand_gr()
         end
     end
     
     if orientation == "H"
         while !d_valid_options_h.include?(destroyer_s)
-            puts "Oops! That grid reference was either invalid or did not allow enough space for the Destroyer. Try again: "
-            destroyer_s = gets.chomp.upcase
+            # puts "Oops! That grid reference was either invalid or did not allow enough space for the Destroyer. Try again: "
+            destroyer_s = rand_gr()
         end 
     end
 
     if orientation =="V"    
         while !d_valid_options_v.include?(destroyer_s)
-            puts "Oops! That grid reference was either invalid or did not allow enough space for the Destoyer. Try again: "
-            destroyer_s = gets.chomp.upcase
+            # puts "Oops! That grid reference was either invalid or did not allow enough space for the Destoyer. Try again: "
+            destroyer_s = rand_gr()
         end 
     end
 
@@ -386,7 +404,7 @@ def place_submarine()
 
         orientation = "h"
 
-        orientation = gets.chomp.upcase
+        orientation = h_or_v()
         valid_orientation = nil
 
         if orientation == "H" || orientation == "V"
@@ -396,44 +414,44 @@ def place_submarine()
         end
 
         while valid_orientation == false
-            print "Please select a valid orientation ('H' or 'V'):" 
-            orientation = gets.chomp.upcase
+            # print "Please select a valid orientation ('H' or 'V'):" 
+            orientation = h_or_v()
                 if orientation == "H" || orientation =="V"
                 valid_orientation = true
             end
         end
 
-        puts "Which grid reference is the starting point for the submarine? (Remember it needs 3 squares of space!)"
-        submarine_s = gets.chomp.upcase
+        # puts "Which grid reference is the starting point for the submarine? (Remember it needs 3 squares of space!)"
+        submarine_s = rand_gr()
 
         # Error validation starts:
 
         if orientation == "H"
             while  $b_g[REFERENCE_HASH[submarine_s]] != " " || $b_g[REFERENCE_HASH[submarine_s]+1] != " " || $b_g[REFERENCE_HASH[submarine_s]+2] != " "   
-            puts "Oops! One of those grid references is already taken. Please try again."
-            submarine_s = gets.chomp.upcase
+            # puts "Oops! One of those grid references is already taken. Please try again."
+            submarine_s = rand_gr()
             end
         end
 
         if orientation == "V"
             while  $b_g[REFERENCE_HASH[submarine_s]] != " " || $b_g[REFERENCE_HASH[submarine_s]+10] != " " || $b_g[REFERENCE_HASH[submarine_s]+20] != " "
-            puts "Oops! One of those grid references is already taken. Please try again."
-            submarine_s = gets.chomp.upcase
+            # puts "Oops! One of those grid references is already taken. Please try again."
+            submarine_s = rand_gr()
             end
         end
 
 
         if orientation == "H"
             while !s_valid_options_h.include?(submarine_s)
-            puts "Oops! That grid reference was either invalid or did not allow enough space for the submarine. Try again: "
-            submarine_s = gets.chomp.upcase
+            # puts "Oops! That grid reference was either invalid or did not allow enough space for the submarine. Try again: "
+            submarine_s = rand_gr()
             end 
         end
 
         if orientation =="V"    
             while !s_valid_options_v.include?(submarine_s)
-            puts "Oops! That grid reference was either invalid or did not allow enough space for the Destoyer. Try again: "
-            submarine_s = gets.chomp.upcase
+            # puts "Oops! That grid reference was either invalid or did not allow enough space for the Destoyer. Try again: "
+            submarine_s = rand_gr()
             end 
         end
 
@@ -478,9 +496,9 @@ def place_minesweeper()
                             "H1", "H2", "H3", "H4", "H5", "H6", "H8", "H9", "H10",
                             "I1", "I2", "I3", "I4", "I5", "I6", "I8", "I9", "I10"]
 
-    puts "It is dirty work but someone has to do it. Do you want to position this minesweeper horizontally ('H') or vertically ('V')?   "
+    # puts "It is dirty work but someone has to do it. Do you want to position this minesweeper horizontally ('H') or vertically ('V')?   "
 
-    orientation = gets.chomp.upcase
+    orientation = h_or_v()
     valid_orientation = nil
 
     if orientation == "H" || orientation == "V"
@@ -490,44 +508,44 @@ def place_minesweeper()
     end
 
     while valid_orientation == false
-        print "Please select a valid orientation ('H' or 'V'):" 
-        orientation = gets.chomp.upcase
+        # print "Please select a valid orientation ('H' or 'V'):" 
+        orientation = h_or_v()
             if orientation == "H" || orientation =="V"
             valid_orientation = true
         end
     end
 
-    puts "Which grid reference is the starting point for the submarine? (Remember it needs 3 squares of space!)"
-    submarine_s = gets.chomp.upcase
+    # puts "Which grid reference is the starting point for the submarine? (Remember it needs 3 squares of space!)"
+    submarine_s = rand_gr()
 
     # Error validation starts:
 
     if orientation == "H"
         while  $b_g[REFERENCE_HASH[submarine_s]] != " " || $b_g[REFERENCE_HASH[submarine_s]+1] != " " || $b_g[REFERENCE_HASH[submarine_s]+2] != " "   
-        puts "Oops! One of those grid references is already taken. Please try again."
-        submarine_s = gets.chomp.upcase
+        # puts "Oops! One of those grid references is already taken. Please try again."
+        submarine_s = rand_gr()
         end
     end
 
     if orientation == "V"
         while  $b_g[REFERENCE_HASH[submarine_s]] != " " || $b_g[REFERENCE_HASH[submarine_s]+10] != " " || $b_g[REFERENCE_HASH[submarine_s]+20] != " "
-        puts "Oops! One of those grid references is already taken. Please try again."
-        submarine_s = gets.chomp.upcase
+        # puts "Oops! One of those grid references is already taken. Please try again."
+        submarine_s = rand_gr()
         end
     end
 
 
     if orientation == "H"
         while !m_valid_options_h.include?(submarine_s)
-        puts "Oops! That grid reference was either invalid or did not allow enough space for the submarine. Try again: "
-        submarine_s = gets.chomp.upcase
+        # puts "Oops! That grid reference was either invalid or did not allow enough space for the submarine. Try again: "
+        submarine_s = rand_gr()
         end 
     end
 
     if orientation =="V"    
         while !m_valid_options_v.include?(submarine_s)
-        puts "Oops! That grid reference was either invalid or did not allow enough space for the Destoyer. Try again: "
-        submarine_s = gets.chomp.upcase
+        # puts "Oops! That grid reference was either invalid or did not allow enough space for the Destoyer. Try again: "
+        submarine_s = rand_gr()
         end 
     end
 
