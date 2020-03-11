@@ -1,3 +1,16 @@
+# Welcome - this requires the user to idenfify themselves
+
+print "PLEASE IDENTIFY YOURSELF: "
+user_name = gets.chomp.upcase
+
+print "Welcome to the bridge Admiral #{user_name}. \nPlease enter your authorization code to commence operations: "
+authorization_code = gets.chomp.downcase
+
+while authorization_code != "alan turing"
+    puts "Wrong code - access denied. \nHint: the password is the name of the man whose computer broke the Enigma code."
+    authorization_code = gets.chomp.downcase
+end
+
 
 # This Method is for the basic grid on which information will be displayed to the user. Each grid square contains a value to be determined elsewhere.
 
@@ -153,7 +166,6 @@ REFERENCE_HASH = {
 
 }
 
-
 # The user fleet consists of 5 ships:
 #     - 1 Aircraft Carrier ("C"), 5 squares long
 #     - 2 Destroyers ("D"), 4 squares long
@@ -180,8 +192,7 @@ def place_carrier()
                             "G1", "G2", "G3", "G4", "G5", "G6",
                             "H1", "H2", "H3", "H4", "H5", "H6",
                             "I1", "I2", "I3", "I4", "I5", "I6",
-                            "J1", "J2", "J3", "J4", "J5", "J6",
-                            "K1", "K2", "K3", "K4", "K5", "K6"]
+                            "J1", "J2", "J3", "J4", "J5", "J6"]
 
     # Similarly, there is no space to position the Carrier vertically outside squares A1 to F10 (inclusive)
 
@@ -193,8 +204,6 @@ def place_carrier()
                             "F1", "F2", "F3", "F4", "F5", "F6", "F8", "F9", "F10"]
 
     puts "Time to position the Carrier! Do you want to position it horizontally ('H') or vertically ('V')?   "
-
-    orientation = "h"
 
     orientation = gets.chomp.upcase
     valid_orientation = nil
@@ -216,18 +225,21 @@ def place_carrier()
     puts "Which grid reference is the starting point for the carrier? (Remember it needs 5 squares of space!)"
     aircraft_carrier_s = gets.chomp.upcase
     
-    while !valid_options_h.include?(aircraft_carrier_s)
-        puts "Oops! That grid reference was either invalid or did not allow enough space for the Carrier. Try again: "
-        aircraft_carrier_s = gets.chomp.upcase
-    end 
 
-    while !valid_options_v.include?(aircraft_carrier_s)
-        puts "Oops! That grid reference was either invalid or did not allow enough space for the Carrier. Try again: "
-        aircraft_carrier_s = gets.chomp.upcase
-    end 
-  
-    
+    if orientation == "H"
+        while !valid_options_h.include?(aircraft_carrier_s)
+            puts "Oops! That grid reference was either invalid or did not allow enough space for the Carrier. Try again: "
+            aircraft_carrier_s = gets.chomp.upcase
+        end 
+    end
 
+    if orientation == "V"
+        while !valid_options_v.include?(aircraft_carrier_s)
+            puts "Oops! That grid reference was either invalid or did not allow enough space for the Carrier. Try again: "
+            aircraft_carrier_s = gets.chomp.upcase
+        end 
+    end
+      
     if orientation == "H"
         $b_g[REFERENCE_HASH[aircraft_carrier_s]] = "C"
         $b_g[REFERENCE_HASH[aircraft_carrier_s]+1] = "C"
@@ -249,13 +261,15 @@ end
 place_carrier()
 
 
+
+
 # It is now time to place the next destoryers.
 
 def place_destroyer()
 
     # There is no space to position the Destoyers horizontally outside the following squares (a larger whitelist than for Carriers as the ship is smaller))
-    valid_options_h =      ["A1", "A2", "A3", "A4", "A5", "A6", "A7", 
-                            "B1", "B2", "B3", "B4", "B5", "B6", "B7",
+    d_valid_options_h =      ["A1", "A2", "A3", "A4", "A5", "A6", "A7", 
+                            "B1", "B2", "B3", "B4", "B5", "B6", "B7",   
                             "C1", "C2", "C3", "C4", "C5", "C6", "C7",
                             "D1", "D2", "D3", "D4", "D5", "D6", "D7",
                             "E1", "E2", "E3", "E4", "E5", "E6", "E7",
@@ -263,10 +277,9 @@ def place_destroyer()
                             "G1", "G2", "G3", "G4", "G5", "G6", "G7",
                             "H1", "H2", "H3", "H4", "H5", "H6", "H7",
                             "I1", "I2", "I3", "I4", "I5", "I6", "I7",
-                            "J1", "J2", "J3", "J4", "J5", "J6", "J7",
-                            "K1", "K2", "K3", "K4", "K5", "K6", "K7"]
+                            "J1", "J2", "J3", "J4", "J5", "J6", "J7"]
 
-    valid_options_v =      ["A1", "A2", "A3", "A4", "A5", "A6", "A8", "A9", "A10",
+    d_valid_options_v =      ["A1", "A2", "A3", "A4", "A5", "A6", "A8", "A9", "A10",
                             "B1", "B2", "B3", "B4", "B5", "B6", "B8", "B9", "B10",
                             "C1", "C2", "C3", "C4", "C5", "C6", "C8", "C9", "C10",
                             "D1", "D2", "D3", "D4", "D5", "D6", "D8", "D9", "D10",
@@ -297,17 +310,39 @@ def place_destroyer()
 
     puts "Which grid reference is the starting point for this destroyer? (Remember it needs 4 squares of space!)"
     destroyer_s = gets.chomp.upcase
-    
-    while !valid_options_h.include?(destroyer_s)
-        puts "Oops! That grid reference was either invalid or did not allow enough space for the Destroyer. Try again: "
-        destroyer_s = gets.chomp.upcase
-    end 
 
-    while !valid_options_v.include?(destroyer_s)
-        puts "Oops! That grid reference was either invalid or did not allow enough space for the Destoyer. Try again: "
-        destroyer_s = gets.chomp.upcase
-    end 
+# Error validation starts:
+
+    if orientation == "H"
+        while  $b_g[REFERENCE_HASH[destroyer_s]] != " " || $b_g[REFERENCE_HASH[destroyer_s]+1] != " " || $b_g[REFERENCE_HASH[destroyer_s]+2] != " " || $b_g[REFERENCE_HASH[destroyer_s]+3] != " "    
+                puts "Oops! One of those grid references is already taken. Please try again."
+                destroyer_s = gets.chomp.upcase
+        end
+    end
+
+    if orientation == "V"
+        while  $b_g[REFERENCE_HASH[destroyer_s]] != " " || $b_g[REFERENCE_HASH[destroyer_s]+10] != " " || $b_g[REFERENCE_HASH[destroyer_s]+20] != " " || $b_g[REFERENCE_HASH[destroyer_s]+30] != " "    
+                puts "Oops! One of those grid references is already taken. Please try again."
+                destroyer_s = gets.chomp.upcase
+        end
+    end
+
     
+    if orientation == "H"
+        while !d_valid_options_h.include?(destroyer_s)
+            puts "Oops! That grid reference was either invalid or did not allow enough space for the Destroyer. Try again: "
+            destroyer_s = gets.chomp.upcase
+        end 
+    end
+
+    if orientation =="V"    
+        while !d_valid_options_v.include?(destroyer_s)
+            puts "Oops! That grid reference was either invalid or did not allow enough space for the Destoyer. Try again: "
+            destroyer_s = gets.chomp.upcase
+        end 
+    end
+
+    # Error validation ends
 
     if orientation == "H"
         $b_g[REFERENCE_HASH[destroyer_s]] = "D"
@@ -330,4 +365,5 @@ place_destroyer()
 # Repeat for second Destroyer
 
 place_destroyer()
+
 
