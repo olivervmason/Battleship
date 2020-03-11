@@ -16,7 +16,7 @@
 
 # This Method is for the basic grid on which information will be displayed to the user. Each grid square contains a value to be determined elsewhere.
 
-$b_g = Array.new(101, " ")       # This creates 101 variables with nil value, to be assigned in the grid Matrix. Position 0 is deliberately redundant.
+$enemy_b_g = Array.new(101, " ")       # This creates 101 variables with nil value, to be assigned in the grid Matrix. Position 0 is deliberately redundant.
 
 def clear_terminal()            # This code pushes everything above the last grid printed out of user view 
     puts "\e[H\e[2J"
@@ -27,25 +27,25 @@ def show_grid()
         grid = %{
                1     2     3     4     5     6     7     8     9    10
             |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|           
-        A   |  #{$b_g[1]}  |  #{$b_g[2]}  |  #{$b_g[3]}  |  #{$b_g[4]}  |  #{$b_g[5]}  |  #{$b_g[6]}  |  #{$b_g[7]}  |  #{$b_g[8]}  |  #{$b_g[9]}  |  #{$b_g[10]}  |
+        A   |  #{$enemy_b_g[1]}  |  #{$enemy_b_g[2]}  |  #{$enemy_b_g[3]}  |  #{$enemy_b_g[4]}  |  #{$enemy_b_g[5]}  |  #{$enemy_b_g[6]}  |  #{$enemy_b_g[7]}  |  #{$enemy_b_g[8]}  |  #{$enemy_b_g[9]}  |  #{$enemy_b_g[10]}  |
             |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|           
-        B   |  #{$b_g[11]}  |  #{$b_g[12]}  |  #{$b_g[13]}  |  #{$b_g[14]}  |  #{$b_g[15]}  |  #{$b_g[16]}  |  #{$b_g[17]}  |  #{$b_g[18]}  |  #{$b_g[19]}  |  #{$b_g[20]}  |
+        B   |  #{$enemy_b_g[11]}  |  #{$enemy_b_g[12]}  |  #{$enemy_b_g[13]}  |  #{$enemy_b_g[14]}  |  #{$enemy_b_g[15]}  |  #{$enemy_b_g[16]}  |  #{$enemy_b_g[17]}  |  #{$enemy_b_g[18]}  |  #{$enemy_b_g[19]}  |  #{$enemy_b_g[20]}  |
             |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|            
-        C   |  #{$b_g[21]}  |  #{$b_g[22]}  |  #{$b_g[23]}  |  #{$b_g[24]}  |  #{$b_g[25]}  |  #{$b_g[26]}  |  #{$b_g[27]}  |  #{$b_g[28]}  |  #{$b_g[29]}  |  #{$b_g[30]}  |
+        C   |  #{$enemy_b_g[21]}  |  #{$enemy_b_g[22]}  |  #{$enemy_b_g[23]}  |  #{$enemy_b_g[24]}  |  #{$enemy_b_g[25]}  |  #{$enemy_b_g[26]}  |  #{$enemy_b_g[27]}  |  #{$enemy_b_g[28]}  |  #{$enemy_b_g[29]}  |  #{$enemy_b_g[30]}  |
             |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|               
-        D   |  #{$b_g[31]}  |  #{$b_g[32]}  |  #{$b_g[33]}  |  #{$b_g[34]}  |  #{$b_g[35]}  |  #{$b_g[36]}  |  #{$b_g[37]}  |  #{$b_g[38]}  |  #{$b_g[39]}  |  #{$b_g[40]}  |
+        D   |  #{$enemy_b_g[31]}  |  #{$enemy_b_g[32]}  |  #{$enemy_b_g[33]}  |  #{$enemy_b_g[34]}  |  #{$enemy_b_g[35]}  |  #{$enemy_b_g[36]}  |  #{$enemy_b_g[37]}  |  #{$enemy_b_g[38]}  |  #{$enemy_b_g[39]}  |  #{$enemy_b_g[40]}  |
             |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|            
-        E   |  #{$b_g[41]}  |  #{$b_g[42]}  |  #{$b_g[43]}  |  #{$b_g[44]}  |  #{$b_g[45]}  |  #{$b_g[46]}  |  #{$b_g[47]}  |  #{$b_g[48]}  |  #{$b_g[49]}  |  #{$b_g[50]}  |
+        E   |  #{$enemy_b_g[41]}  |  #{$enemy_b_g[42]}  |  #{$enemy_b_g[43]}  |  #{$enemy_b_g[44]}  |  #{$enemy_b_g[45]}  |  #{$enemy_b_g[46]}  |  #{$enemy_b_g[47]}  |  #{$enemy_b_g[48]}  |  #{$enemy_b_g[49]}  |  #{$enemy_b_g[50]}  |
             |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|            
-        F   |  #{$b_g[51]}  |  #{$b_g[52]}  |  #{$b_g[53]}  |  #{$b_g[54]}  |  #{$b_g[55]}  |  #{$b_g[56]}  |  #{$b_g[57]}  |  #{$b_g[58]}  |  #{$b_g[59]}  |  #{$b_g[60]}  |
+        F   |  #{$enemy_b_g[51]}  |  #{$enemy_b_g[52]}  |  #{$enemy_b_g[53]}  |  #{$enemy_b_g[54]}  |  #{$enemy_b_g[55]}  |  #{$enemy_b_g[56]}  |  #{$enemy_b_g[57]}  |  #{$enemy_b_g[58]}  |  #{$enemy_b_g[59]}  |  #{$enemy_b_g[60]}  |
             |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|            
-        G   |  #{$b_g[61]}  |  #{$b_g[62]}  |  #{$b_g[63]}  |  #{$b_g[64]}  |  #{$b_g[65]}  |  #{$b_g[66]}  |  #{$b_g[67]}  |  #{$b_g[68]}  |  #{$b_g[69]}  |  #{$b_g[70]}  |
+        G   |  #{$enemy_b_g[61]}  |  #{$enemy_b_g[62]}  |  #{$enemy_b_g[63]}  |  #{$enemy_b_g[64]}  |  #{$enemy_b_g[65]}  |  #{$enemy_b_g[66]}  |  #{$enemy_b_g[67]}  |  #{$enemy_b_g[68]}  |  #{$enemy_b_g[69]}  |  #{$enemy_b_g[70]}  |
             |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|               
-        H   |  #{$b_g[71]}  |  #{$b_g[72]}  |  #{$b_g[73]}  |  #{$b_g[74]}  |  #{$b_g[75]}  |  #{$b_g[76]}  |  #{$b_g[77]}  |  #{$b_g[78]}  |  #{$b_g[79]}  |  #{$b_g[80]}  |
+        H   |  #{$enemy_b_g[71]}  |  #{$enemy_b_g[72]}  |  #{$enemy_b_g[73]}  |  #{$enemy_b_g[74]}  |  #{$enemy_b_g[75]}  |  #{$enemy_b_g[76]}  |  #{$enemy_b_g[77]}  |  #{$enemy_b_g[78]}  |  #{$enemy_b_g[79]}  |  #{$enemy_b_g[80]}  |
             |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|            
-        I   |  #{$b_g[81]}  |  #{$b_g[82]}  |  #{$b_g[83]}  |  #{$b_g[84]}  |  #{$b_g[85]}  |  #{$b_g[86]}  |  #{$b_g[87]}  |  #{$b_g[88]}  |  #{$b_g[89]}  |  #{$b_g[90]}  |
+        I   |  #{$enemy_b_g[81]}  |  #{$enemy_b_g[82]}  |  #{$enemy_b_g[83]}  |  #{$enemy_b_g[84]}  |  #{$enemy_b_g[85]}  |  #{$enemy_b_g[86]}  |  #{$enemy_b_g[87]}  |  #{$enemy_b_g[88]}  |  #{$enemy_b_g[89]}  |  #{$enemy_b_g[90]}  |
             |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|            
-        J   |  #{$b_g[91]}  |  #{$b_g[92]}  |  #{$b_g[93]}  |  #{$b_g[94]}  |  #{$b_g[95]}  |  #{$b_g[96]}  |  #{$b_g[97]}  |  #{$b_g[98]}  |  #{$b_g[99]}  |  #{$b_g[100]}  |
+        J   |  #{$enemy_b_g[91]}  |  #{$enemy_b_g[92]}  |  #{$enemy_b_g[93]}  |  #{$enemy_b_g[94]}  |  #{$enemy_b_g[95]}  |  #{$enemy_b_g[96]}  |  #{$enemy_b_g[97]}  |  #{$enemy_b_g[98]}  |  #{$enemy_b_g[99]}  |  #{$enemy_b_g[100]}  |
             |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|            
         }
 
@@ -261,17 +261,17 @@ def place_carrier()
     end
       
     if orientation == "H"
-        $b_g[REFERENCE_HASH[aircraft_carrier_s]] = "C"
-        $b_g[REFERENCE_HASH[aircraft_carrier_s]+1] = "C"
-        $b_g[REFERENCE_HASH[aircraft_carrier_s]+2] = "C"
-        $b_g[REFERENCE_HASH[aircraft_carrier_s]+3] = "C"
-        $b_g[REFERENCE_HASH[aircraft_carrier_s]+4] = "C"      
+        $enemy_b_g[REFERENCE_HASH[aircraft_carrier_s]] = "C"
+        $enemy_b_g[REFERENCE_HASH[aircraft_carrier_s]+1] = "C"
+        $enemy_b_g[REFERENCE_HASH[aircraft_carrier_s]+2] = "C"
+        $enemy_b_g[REFERENCE_HASH[aircraft_carrier_s]+3] = "C"
+        $enemy_b_g[REFERENCE_HASH[aircraft_carrier_s]+4] = "C"      
     else 
-        $b_g[REFERENCE_HASH[aircraft_carrier_s]] = "C"
-        $b_g[REFERENCE_HASH[aircraft_carrier_s]+10] = "C"
-        $b_g[REFERENCE_HASH[aircraft_carrier_s]+20] = "C"
-        $b_g[REFERENCE_HASH[aircraft_carrier_s]+30] = "C"
-        $b_g[REFERENCE_HASH[aircraft_carrier_s]+40] = "C"
+        $enemy_b_g[REFERENCE_HASH[aircraft_carrier_s]] = "C"
+        $enemy_b_g[REFERENCE_HASH[aircraft_carrier_s]+10] = "C"
+        $enemy_b_g[REFERENCE_HASH[aircraft_carrier_s]+20] = "C"
+        $enemy_b_g[REFERENCE_HASH[aircraft_carrier_s]+30] = "C"
+        $enemy_b_g[REFERENCE_HASH[aircraft_carrier_s]+40] = "C"
     end 
 
     show_grid()
@@ -329,14 +329,14 @@ def place_destroyer()
 # Error validation starts:
 
     if orientation == "H"
-        while  $b_g[REFERENCE_HASH[destroyer_s]] != " " || $b_g[REFERENCE_HASH[destroyer_s]+1] != " " || $b_g[REFERENCE_HASH[destroyer_s]+2] != " " || $b_g[REFERENCE_HASH[destroyer_s]+3] != " "    
+        while  $enemy_b_g[REFERENCE_HASH[destroyer_s]] != " " || $enemy_b_g[REFERENCE_HASH[destroyer_s]+1] != " " || $enemy_b_g[REFERENCE_HASH[destroyer_s]+2] != " " || $enemy_b_g[REFERENCE_HASH[destroyer_s]+3] != " "    
                 # puts "Oops! One of those grid references is already taken. Please try again."
                 destroyer_s = rand_gr()
         end
     end
 
     if orientation == "V"
-        while  $b_g[REFERENCE_HASH[destroyer_s]] != " " || $b_g[REFERENCE_HASH[destroyer_s]+10] != " " || $b_g[REFERENCE_HASH[destroyer_s]+20] != " " || $b_g[REFERENCE_HASH[destroyer_s]+30] != " "    
+        while  $enemy_b_g[REFERENCE_HASH[destroyer_s]] != " " || $enemy_b_g[REFERENCE_HASH[destroyer_s]+10] != " " || $enemy_b_g[REFERENCE_HASH[destroyer_s]+20] != " " || $enemy_b_g[REFERENCE_HASH[destroyer_s]+30] != " "    
                 # puts "Oops! One of those grid references is already taken. Please try again."
                 destroyer_s = rand_gr()
         end
@@ -359,15 +359,15 @@ def place_destroyer()
     # Error validation ends
 
     if orientation == "H"
-        $b_g[REFERENCE_HASH[destroyer_s]] = "D"
-        $b_g[REFERENCE_HASH[destroyer_s]+1] = "D"
-        $b_g[REFERENCE_HASH[destroyer_s]+2] = "D"
-        $b_g[REFERENCE_HASH[destroyer_s]+3] = "D"
+        $enemy_b_g[REFERENCE_HASH[destroyer_s]] = "D"
+        $enemy_b_g[REFERENCE_HASH[destroyer_s]+1] = "D"
+        $enemy_b_g[REFERENCE_HASH[destroyer_s]+2] = "D"
+        $enemy_b_g[REFERENCE_HASH[destroyer_s]+3] = "D"
     else 
-        $b_g[REFERENCE_HASH[destroyer_s]] = "D"
-        $b_g[REFERENCE_HASH[destroyer_s]+10] = "D"
-        $b_g[REFERENCE_HASH[destroyer_s]+20] = "D"
-        $b_g[REFERENCE_HASH[destroyer_s]+30] = "D"
+        $enemy_b_g[REFERENCE_HASH[destroyer_s]] = "D"
+        $enemy_b_g[REFERENCE_HASH[destroyer_s]+10] = "D"
+        $enemy_b_g[REFERENCE_HASH[destroyer_s]+20] = "D"
+        $enemy_b_g[REFERENCE_HASH[destroyer_s]+30] = "D"
     end 
 
     show_grid()
@@ -400,7 +400,7 @@ def place_submarine()
                                 "G1", "G2", "G3", "G4", "G5", "G6", "G8", "G9", "G10",
                                 "H1", "H2", "H3", "H4", "H5", "H6", "H8", "H9", "H10"]
 
-        puts "Time to position your sneaky submarine. Do you want to position this horizontally ('H') or vertically ('V')?   "
+        # puts "Time to position your sneaky submarine. Do you want to position this horizontally ('H') or vertically ('V')?   "
 
         orientation = "h"
 
@@ -427,14 +427,14 @@ def place_submarine()
         # Error validation starts:
 
         if orientation == "H"
-            while  $b_g[REFERENCE_HASH[submarine_s]] != " " || $b_g[REFERENCE_HASH[submarine_s]+1] != " " || $b_g[REFERENCE_HASH[submarine_s]+2] != " "   
+            while  $enemy_b_g[REFERENCE_HASH[submarine_s]] != " " || $enemy_b_g[REFERENCE_HASH[submarine_s]+1] != " " || $enemy_b_g[REFERENCE_HASH[submarine_s]+2] != " "   
             # puts "Oops! One of those grid references is already taken. Please try again."
             submarine_s = rand_gr()
             end
         end
 
         if orientation == "V"
-            while  $b_g[REFERENCE_HASH[submarine_s]] != " " || $b_g[REFERENCE_HASH[submarine_s]+10] != " " || $b_g[REFERENCE_HASH[submarine_s]+20] != " "
+            while  $enemy_b_g[REFERENCE_HASH[submarine_s]] != " " || $enemy_b_g[REFERENCE_HASH[submarine_s]+10] != " " || $enemy_b_g[REFERENCE_HASH[submarine_s]+20] != " "
             # puts "Oops! One of those grid references is already taken. Please try again."
             submarine_s = rand_gr()
             end
@@ -458,13 +458,13 @@ def place_submarine()
         # Error validation ends
 
         if orientation == "H"
-        $b_g[REFERENCE_HASH[submarine_s]] = "S"
-        $b_g[REFERENCE_HASH[submarine_s]+1] = "S"
-        $b_g[REFERENCE_HASH[submarine_s]+2] = "S"
+        $enemy_b_g[REFERENCE_HASH[submarine_s]] = "S"
+        $enemy_b_g[REFERENCE_HASH[submarine_s]+1] = "S"
+        $enemy_b_g[REFERENCE_HASH[submarine_s]+2] = "S"
         else 
-        $b_g[REFERENCE_HASH[submarine_s]] = "S"
-        $b_g[REFERENCE_HASH[submarine_s]+10] = "S"
-        $b_g[REFERENCE_HASH[submarine_s]+20] = "S"
+        $enemy_b_g[REFERENCE_HASH[submarine_s]] = "S"
+        $enemy_b_g[REFERENCE_HASH[submarine_s]+10] = "S"
+        $enemy_b_g[REFERENCE_HASH[submarine_s]+20] = "S"
         end 
 
 show_grid()
@@ -515,48 +515,48 @@ def place_minesweeper()
         end
     end
 
-    # puts "Which grid reference is the starting point for the submarine? (Remember it needs 3 squares of space!)"
-    submarine_s = rand_gr()
+    # puts "Which grid reference is the starting point for the Minesweeper? (Remember it needs 3 squares of space!)"
+    minesweeper_s = rand_gr()
 
     # Error validation starts:
 
     if orientation == "H"
-        while  $b_g[REFERENCE_HASH[submarine_s]] != " " || $b_g[REFERENCE_HASH[submarine_s]+1] != " " || $b_g[REFERENCE_HASH[submarine_s]+2] != " "   
+        while  $enemy_b_g[REFERENCE_HASH[minesweeper_s]] != " " || $enemy_b_g[REFERENCE_HASH[minesweeper_s]+1] != " "    
         # puts "Oops! One of those grid references is already taken. Please try again."
-        submarine_s = rand_gr()
+        minesweeper_s = rand_gr()
         end
     end
 
     if orientation == "V"
-        while  $b_g[REFERENCE_HASH[submarine_s]] != " " || $b_g[REFERENCE_HASH[submarine_s]+10] != " " || $b_g[REFERENCE_HASH[submarine_s]+20] != " "
+        while  $enemy_b_g[REFERENCE_HASH[minesweeper_s]] != " " || $enemy_b_g[REFERENCE_HASH[minesweeper_s]+10] != " "
         # puts "Oops! One of those grid references is already taken. Please try again."
-        submarine_s = rand_gr()
+        minesweeper_s = rand_gr()
         end
     end
 
 
     if orientation == "H"
-        while !m_valid_options_h.include?(submarine_s)
+        while !m_valid_options_h.include?(minesweeper_s)
         # puts "Oops! That grid reference was either invalid or did not allow enough space for the submarine. Try again: "
-        submarine_s = rand_gr()
+        minesweeper_s = rand_gr()
         end 
     end
 
     if orientation =="V"    
-        while !m_valid_options_v.include?(submarine_s)
+        while !m_valid_options_v.include?(minesweeper_s)
         # puts "Oops! That grid reference was either invalid or did not allow enough space for the Destoyer. Try again: "
-        submarine_s = rand_gr()
+        minesweeper_s = rand_gr()
         end 
     end
 
     # Error validation ends
 
     if orientation == "H"
-    $b_g[REFERENCE_HASH[submarine_s]] = "M"
-    $b_g[REFERENCE_HASH[submarine_s]+1] = "M"
+    $enemy_b_g[REFERENCE_HASH[minesweeper_s]] = "M"
+    $enemy_b_g[REFERENCE_HASH[minesweeper_s]+1] = "M"
     else 
-    $b_g[REFERENCE_HASH[submarine_s]] = "M"
-    $b_g[REFERENCE_HASH[submarine_s]+10] = "M"
+    $enemy_b_g[REFERENCE_HASH[minesweeper_s]] = "M"
+    $enemy_b_g[REFERENCE_HASH[minesweeper_s]+10] = "M"
     end 
 
 show_grid()

@@ -1,18 +1,19 @@
 # Welcome - this requires the user to idenfify themselves
-def user_login()
-    print "PLEASE IDENTIFY YOURSELF: "
-    user_name = gets.chomp.upcase
 
-    print "Welcome to the bridge Admiral #{user_name}. \nPlease enter your authorization code to commence operations: "
-    authorization_code = gets.chomp.downcase
+# def user_login()
+#     print "PLEASE IDENTIFY YOURSELF: "
+#     user_name = gets.chomp.upcase
 
-    while authorization_code != "alan turing"
-        puts "Wrong code - access denied. \nHint: the password is the name of the man whose computer broke the Enigma code."
-        authorization_code = gets.chomp.downcase
-    end
-end
+#     print "Welcome to the Bridge Admiral #{user_name}. \nPlease enter your authorization code to commence operations: "
+#     authorization_code = gets.chomp.downcase
 
-user_login()
+#     while authorization_code != "alan turing"
+#         puts "Invalid code - ACCESS DENIED. \nHint: the password is the name of the man whose computer broke the Enigma code."
+#         authorization_code = gets.chomp.downcase
+#     end
+# end
+
+# user_login()
 
 # This Method is for the basic grid on which information will be displayed to the user. Each grid square contains a value to be determined elsewhere.
 
@@ -205,7 +206,7 @@ def place_carrier()
                             "E1", "E2", "E3", "E4", "E5", "E6", "E8", "E9", "E10",
                             "F1", "F2", "F3", "F4", "F5", "F6", "F8", "F9", "F10"]
 
-    puts "Time to position the Carrier! Do you want to position it horizontally ('H') or vertically ('V')?   "
+    puts "Time to position your fleet. \nWe will start with the Carrier - do you want to position it horizontally ('H') or vertically ('V')?   "
 
     orientation = gets.chomp.upcase
     valid_orientation = nil
@@ -224,7 +225,7 @@ def place_carrier()
         end
     end
 
-    puts "Which grid reference is the starting point for the carrier? (Remember it needs 5 squares of space!)"
+    puts "Which grid reference is the starting point for the Carrier? (Remember it needs 5 squares of space!)"
     aircraft_carrier_s = gets.chomp.upcase
     
 
@@ -286,7 +287,7 @@ def place_destroyer()
                             "F1", "F2", "F3", "F4", "F5", "F6", "F8", "F9", "F10",
                             "G1", "G2", "G3", "G4", "G5", "G6", "G8", "G9", "G10"]
 
-    puts "Time to position the Destoyers! Do you want to position this one horizontally ('H') or vertically ('V')?   "
+    puts "Time to position the two Destoyers! Do you want to position this one horizontally ('H') or vertically ('V')?   "
 
     orientation = gets.chomp.upcase
     valid_orientation = nil
@@ -305,7 +306,7 @@ def place_destroyer()
         end
     end
 
-    puts "Which grid reference is the starting point for this destroyer? (Remember it needs 4 squares of space!)"
+    puts "Which grid reference is the starting point for this Destroyer? (Remember it needs 4 squares of space!)"
     destroyer_s = gets.chomp.upcase
 
 # Error validation starts:
@@ -333,7 +334,7 @@ def place_destroyer()
 
     if orientation =="V"    
         while !d_valid_options_v.include?(destroyer_s)
-            puts "Oops! That grid reference was either invalid or did not allow enough space for the Destoyer. Try again: "
+            puts "Oops! That grid reference was either invalid or did not allow enough space for the Destroyer. Try again: "
             destroyer_s = gets.chomp.upcase
         end 
     end
@@ -478,7 +479,7 @@ def place_minesweeper()
                             "H1", "H2", "H3", "H4", "H5", "H6", "H8", "H9", "H10",
                             "I1", "I2", "I3", "I4", "I5", "I6", "I8", "I9", "I10"]
 
-    puts "It is dirty work but someone has to do it. Do you want to position this minesweeper horizontally ('H') or vertically ('V')?   "
+    puts "It is dirty work but someone has to do it - you have two Minesweepers. Do you want to position this minesweeper horizontally ('H') or vertically ('V')?   "
 
     orientation = gets.chomp.upcase
     valid_orientation = nil
@@ -497,36 +498,36 @@ def place_minesweeper()
         end
     end
 
-    puts "Which grid reference is the starting point for the submarine? (Remember it needs 3 squares of space!)"
-    submarine_s = gets.chomp.upcase
+    puts "Which grid reference is the starting point for this minesweeper? (Remember it needs 3 squares of space!)"
+    minesweeper_s = gets.chomp.upcase
 
     # Error validation starts:
 
     if orientation == "H"
-        while  $b_g[REFERENCE_HASH[submarine_s]] != " " || $b_g[REFERENCE_HASH[submarine_s]+1] != " " || $b_g[REFERENCE_HASH[submarine_s]+2] != " "   
+        while  $b_g[REFERENCE_HASH[minesweeper_s]] != " " || $b_g[REFERENCE_HASH[minesweeper_s]+1] != " "   
         puts "Oops! One of those grid references is already taken. Please try again."
-        submarine_s = gets.chomp.upcase
+        minesweeper_s = gets.chomp.upcase
         end
     end
 
     if orientation == "V"
-        while  $b_g[REFERENCE_HASH[submarine_s]] != " " || $b_g[REFERENCE_HASH[submarine_s]+10] != " " || $b_g[REFERENCE_HASH[submarine_s]+20] != " "
+        while  $b_g[REFERENCE_HASH[minesweeper_s]] != " " || $b_g[REFERENCE_HASH[minesweeper_s]+10] != " "
         puts "Oops! One of those grid references is already taken. Please try again."
-        submarine_s = gets.chomp.upcase
+        minesweeper_s = gets.chomp.upcase
         end
     end
 
 
     if orientation == "H"
-        while !m_valid_options_h.include?(submarine_s)
-        puts "Oops! That grid reference was either invalid or did not allow enough space for the submarine. Try again: "
+        while !m_valid_options_h.include?(minesweeper_s)
+        puts "Oops! That grid reference was either invalid or did not allow enough space for the Minesweeper (2 spaces). Try again: "
         submarine_s = gets.chomp.upcase
         end 
     end
 
     if orientation =="V"    
-        while !m_valid_options_v.include?(submarine_s)
-        puts "Oops! That grid reference was either invalid or did not allow enough space for the Destoyer. Try again: "
+        while !m_valid_options_v.include?(minesweeper_s)
+        puts "Oops! That grid reference was either invalid or did not allow enough space for the Minsweeper (2 spaces). Try again: "
         submarine_s = gets.chomp.upcase
         end 
     end
@@ -534,11 +535,11 @@ def place_minesweeper()
     # Error validation ends
 
     if orientation == "H"
-    $b_g[REFERENCE_HASH[submarine_s]] = "M"
-    $b_g[REFERENCE_HASH[submarine_s]+1] = "M"
+    $b_g[REFERENCE_HASH[minesweeper_s]] = "M"
+    $b_g[REFERENCE_HASH[minesweeper_s]+1] = "M"
     else 
-    $b_g[REFERENCE_HASH[submarine_s]] = "M"
-    $b_g[REFERENCE_HASH[submarine_s]+10] = "M"
+    $b_g[REFERENCE_HASH[minesweeper_s]] = "M"
+    $b_g[REFERENCE_HASH[minesweeper_s]+10] = "M"
     end 
 
 show_grid()
