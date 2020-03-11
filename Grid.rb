@@ -1,16 +1,18 @@
-# Welcome - this requires the user to idenfify themselves
+Welcome - this requires the user to idenfify themselves
+def user_login()
+    print "PLEASE IDENTIFY YOURSELF: "
+    user_name = gets.chomp.upcase
 
-print "PLEASE IDENTIFY YOURSELF: "
-user_name = gets.chomp.upcase
-
-print "Welcome to the bridge Admiral #{user_name}. \nPlease enter your authorization code to commence operations: "
-authorization_code = gets.chomp.downcase
-
-while authorization_code != "alan turing"
-    puts "Wrong code - access denied. \nHint: the password is the name of the man whose computer broke the Enigma code."
+    print "Welcome to the bridge Admiral #{user_name}. \nPlease enter your authorization code to commence operations: "
     authorization_code = gets.chomp.downcase
+
+    while authorization_code != "alan turing"
+        puts "Wrong code - access denied. \nHint: the password is the name of the man whose computer broke the Enigma code."
+        authorization_code = gets.chomp.downcase
+    end
 end
 
+user_login()
 
 # This Method is for the basic grid on which information will be displayed to the user. Each grid square contains a value to be determined elsewhere.
 
@@ -268,7 +270,7 @@ place_carrier()
 def place_destroyer()
 
     # There is no space to position the Destoyers horizontally outside the following squares (a larger whitelist than for Carriers as the ship is smaller))
-    d_valid_options_h =      ["A1", "A2", "A3", "A4", "A5", "A6", "A7", 
+    d_valid_options_h =    ["A1", "A2", "A3", "A4", "A5", "A6", "A7", 
                             "B1", "B2", "B3", "B4", "B5", "B6", "B7",   
                             "C1", "C2", "C3", "C4", "C5", "C6", "C7",
                             "D1", "D2", "D3", "D4", "D5", "D6", "D7",
@@ -279,7 +281,7 @@ def place_destroyer()
                             "I1", "I2", "I3", "I4", "I5", "I6", "I7",
                             "J1", "J2", "J3", "J4", "J5", "J6", "J7"]
 
-    d_valid_options_v =      ["A1", "A2", "A3", "A4", "A5", "A6", "A8", "A9", "A10",
+    d_valid_options_v =    ["A1", "A2", "A3", "A4", "A5", "A6", "A8", "A9", "A10",
                             "B1", "B2", "B3", "B4", "B5", "B6", "B8", "B9", "B10",
                             "C1", "C2", "C3", "C4", "C5", "C6", "C8", "C9", "C10",
                             "D1", "D2", "D3", "D4", "D5", "D6", "D8", "D9", "D10",
@@ -288,8 +290,6 @@ def place_destroyer()
                             "G1", "G2", "G3", "G4", "G5", "G6", "G8", "G9", "G10"]
 
     puts "Time to position the Destoyers! Do you want to position this one horizontally ('H') or vertically ('V')?   "
-
-    orientation = "h"
 
     orientation = gets.chomp.upcase
     valid_orientation = nil
@@ -326,7 +326,6 @@ def place_destroyer()
                 destroyer_s = gets.chomp.upcase
         end
     end
-
     
     if orientation == "H"
         while !d_valid_options_h.include?(destroyer_s)
@@ -360,10 +359,194 @@ def place_destroyer()
 
 end 
 
+# Repeat for second Destroyer:
+place_destroyer()
 place_destroyer()
 
-# Repeat for second Destroyer
+def place_submarine()
 
-place_destroyer()
+        s_valid_options_h =    ["A1", "A2", "A3", "A4", "A5", "A6", "A7", "A8",
+                                "B1", "B2", "B3", "B4", "B5", "B6", "B7", "B8",   
+                                "C1", "C2", "C3", "C4", "C5", "C6", "C7", "C8",
+                                "D1", "D2", "D3", "D4", "D5", "D6", "D7", "D8",
+                                "E1", "E2", "E3", "E4", "E5", "E6", "E7", "E8",
+                                "F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8",
+                                "G1", "G2", "G3", "G4", "G5", "G6", "G7", "G8",
+                                "H1", "H2", "H3", "H4", "H5", "H6", "H7", "H8",
+                                "I1", "I2", "I3", "I4", "I5", "I6", "I7", "I8",
+                                "J1", "J2", "J3", "J4", "J5", "J6", "J7", "J8"]
+
+        s_valid_options_v =    ["A1", "A2", "A3", "A4", "A5", "A6", "A8", "A9", "A10",
+                                "B1", "B2", "B3", "B4", "B5", "B6", "B8", "B9", "B10",
+                                "C1", "C2", "C3", "C4", "C5", "C6", "C8", "C9", "C10",
+                                "D1", "D2", "D3", "D4", "D5", "D6", "D8", "D9", "D10",
+                                "E1", "E2", "E3", "E4", "E5", "E6", "E8", "E9", "E10",
+                                "F1", "F2", "F3", "F4", "F5", "F6", "F8", "F9", "F10",
+                                "G1", "G2", "G3", "G4", "G5", "G6", "G8", "G9", "G10",
+                                "H1", "H2", "H3", "H4", "H5", "H6", "H8", "H9", "H10"]
+
+        puts "Time to position your sneaky submarine. Do you want to position this horizontally ('H') or vertically ('V')?   "
+
+        orientation = "h"
+
+        orientation = gets.chomp.upcase
+        valid_orientation = nil
+
+        if orientation == "H" || orientation == "V"
+            valid_orientation = true
+        else 
+            valid_orientation = false
+        end
+
+        while valid_orientation == false
+            print "Please select a valid orientation ('H' or 'V'):" 
+            orientation = gets.chomp.upcase
+                if orientation == "H" || orientation =="V"
+                valid_orientation = true
+            end
+        end
+
+        puts "Which grid reference is the starting point for the submarine? (Remember it needs 3 squares of space!)"
+        submarine_s = gets.chomp.upcase
+
+        # Error validation starts:
+
+        if orientation == "H"
+            while  $b_g[REFERENCE_HASH[submarine_s]] != " " || $b_g[REFERENCE_HASH[submarine_s]+1] != " " || $b_g[REFERENCE_HASH[submarine_s]+2] != " "   
+            puts "Oops! One of those grid references is already taken. Please try again."
+            submarine_s = gets.chomp.upcase
+            end
+        end
+
+        if orientation == "V"
+            while  $b_g[REFERENCE_HASH[submarine_s]] != " " || $b_g[REFERENCE_HASH[submarine_s]+10] != " " || $b_g[REFERENCE_HASH[submarine_s]+20] != " "
+            puts "Oops! One of those grid references is already taken. Please try again."
+            submarine_s = gets.chomp.upcase
+            end
+        end
 
 
+        if orientation == "H"
+            while !s_valid_options_h.include?(submarine_s)
+            puts "Oops! That grid reference was either invalid or did not allow enough space for the submarine. Try again: "
+            submarine_s = gets.chomp.upcase
+            end 
+        end
+
+        if orientation =="V"    
+            while !s_valid_options_v.include?(submarine_s)
+            puts "Oops! That grid reference was either invalid or did not allow enough space for the Destoyer. Try again: "
+            submarine_s = gets.chomp.upcase
+            end 
+        end
+
+        # Error validation ends
+
+        if orientation == "H"
+        $b_g[REFERENCE_HASH[submarine_s]] = "S"
+        $b_g[REFERENCE_HASH[submarine_s]+1] = "S"
+        $b_g[REFERENCE_HASH[submarine_s]+2] = "S"
+        else 
+        $b_g[REFERENCE_HASH[submarine_s]] = "S"
+        $b_g[REFERENCE_HASH[submarine_s]+10] = "S"
+        $b_g[REFERENCE_HASH[submarine_s]+20] = "S"
+        end 
+
+show_grid()
+
+end
+
+place_submarine()
+
+def place_minesweeper()
+
+    m_valid_options_h =    ["A1", "A2", "A3", "A4", "A5", "A6", "A7", "A8", "A9",
+                            "B1", "B2", "B3", "B4", "B5", "B6", "B7", "B8", "B9",   
+                            "C1", "C2", "C3", "C4", "C5", "C6", "C7", "C8", "C9",
+                            "D1", "D2", "D3", "D4", "D5", "D6", "D7", "D8", "D9",
+                            "E1", "E2", "E3", "E4", "E5", "E6", "E7", "E8", "E9",
+                            "F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F9",
+                            "G1", "G2", "G3", "G4", "G5", "G6", "G7", "G8", "G9",
+                            "H1", "H2", "H3", "H4", "H5", "H6", "H7", "H8", "H9",
+                            "I1", "I2", "I3", "I4", "I5", "I6", "I7", "I8", "I9",
+                            "J1", "J2", "J3", "J4", "J5", "J6", "J7", "J8", "J9"]
+
+    m_valid_options_v =    ["A1", "A2", "A3", "A4", "A5", "A6", "A8", "A9", "A10",
+                            "B1", "B2", "B3", "B4", "B5", "B6", "B8", "B9", "B10",
+                            "C1", "C2", "C3", "C4", "C5", "C6", "C8", "C9", "C10",
+                            "D1", "D2", "D3", "D4", "D5", "D6", "D8", "D9", "D10",
+                            "E1", "E2", "E3", "E4", "E5", "E6", "E8", "E9", "E10",
+                            "F1", "F2", "F3", "F4", "F5", "F6", "F8", "F9", "F10",
+                            "G1", "G2", "G3", "G4", "G5", "G6", "G8", "G9", "G10",
+                            "H1", "H2", "H3", "H4", "H5", "H6", "H8", "H9", "H10",
+                            "I1", "I2", "I3", "I4", "I5", "I6", "I8", "I9", "I10"]
+
+    puts "It is dirty work but someone has to do it. Do you want to position this minesweeper horizontally ('H') or vertically ('V')?   "
+
+    orientation = gets.chomp.upcase
+    valid_orientation = nil
+
+    if orientation == "H" || orientation == "V"
+        valid_orientation = true
+    else 
+        valid_orientation = false
+    end
+
+    while valid_orientation == false
+        print "Please select a valid orientation ('H' or 'V'):" 
+        orientation = gets.chomp.upcase
+            if orientation == "H" || orientation =="V"
+            valid_orientation = true
+        end
+    end
+
+    puts "Which grid reference is the starting point for the submarine? (Remember it needs 3 squares of space!)"
+    submarine_s = gets.chomp.upcase
+
+    # Error validation starts:
+
+    if orientation == "H"
+        while  $b_g[REFERENCE_HASH[submarine_s]] != " " || $b_g[REFERENCE_HASH[submarine_s]+1] != " " || $b_g[REFERENCE_HASH[submarine_s]+2] != " "   
+        puts "Oops! One of those grid references is already taken. Please try again."
+        submarine_s = gets.chomp.upcase
+        end
+    end
+
+    if orientation == "V"
+        while  $b_g[REFERENCE_HASH[submarine_s]] != " " || $b_g[REFERENCE_HASH[submarine_s]+10] != " " || $b_g[REFERENCE_HASH[submarine_s]+20] != " "
+        puts "Oops! One of those grid references is already taken. Please try again."
+        submarine_s = gets.chomp.upcase
+        end
+    end
+
+
+    if orientation == "H"
+        while !m_valid_options_h.include?(submarine_s)
+        puts "Oops! That grid reference was either invalid or did not allow enough space for the submarine. Try again: "
+        submarine_s = gets.chomp.upcase
+        end 
+    end
+
+    if orientation =="V"    
+        while !m_valid_options_v.include?(submarine_s)
+        puts "Oops! That grid reference was either invalid or did not allow enough space for the Destoyer. Try again: "
+        submarine_s = gets.chomp.upcase
+        end 
+    end
+
+    # Error validation ends
+
+    if orientation == "H"
+    $b_g[REFERENCE_HASH[submarine_s]] = "M"
+    $b_g[REFERENCE_HASH[submarine_s]+1] = "M"
+    else 
+    $b_g[REFERENCE_HASH[submarine_s]] = "M"
+    $b_g[REFERENCE_HASH[submarine_s]+10] = "M"
+    end 
+
+show_grid()
+
+end
+
+place_minesweeper()
+place_minesweeper()
