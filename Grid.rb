@@ -385,8 +385,6 @@ def place_submarine()
 
         puts "Time to position your sneaky submarine. Do you want to position this horizontally ('H') or vertically ('V')?   "
 
-        orientation = "h"
-
         orientation = gets.chomp.upcase
         valid_orientation = nil
 
