@@ -155,7 +155,7 @@ REFERENCE_HASH = {
 
 }
 
-# This method is to give the computer a binary choice for orientating each of its ships
+# This method is to give the computer a binary choice for orientating each of its ships:
 
 def h_or_v()                              
     h_choice = rand(0..1)
@@ -166,7 +166,7 @@ def h_or_v()
     end
 end
 
-# This method selects a random grid alpha numberic reference. This will be used by the computer to place its ships and to fire on the enemy,
+# This method selects a random grid alpha numberic reference. This will be used by the computer to place its ships, and later to fire on the user fleet,
 
 def rand_gr()                               
     array_choice = REFERENCE_HASH.to_a
@@ -175,9 +175,9 @@ def rand_gr()
 end
 
 
-def place_carrier()
+def place_carrier() # This method is to place the first ship on the grid.
 
-# There is no space to position the Carrier horizontally outside squares A1 to J6 (inclusive)
+# There is no space to position the Carrier horizontally outside squares A1 to J6 (inclusive), so these grid squares are whitelisted for error checking.
     valid_options_h =      ["A1", "A2", "A3", "A4", "A5", "A6", 
                             "B1", "B2", "B3", "B4", "B5", "B6",
                             "C1", "C2", "C3", "C4", "C5", "C6",

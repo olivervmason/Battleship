@@ -22,7 +22,7 @@ user_login()
 
 $b_g = Array.new(101, " ")       # This creates 101 variables with nil value, to be assigned in the grid Matrix. Position 0 is deliberately redundant.
 
-def clear_terminal()            # This code pushes everything above the last grid printed out of user view 
+def clear_terminal()            # This code pushes everything above the last grid printed out of user view
     puts "\e[H\e[2J"
 end
 
@@ -30,35 +30,35 @@ def show_grid()
         clear_terminal
         grid = %{
                1     2     3     4     5     6     7     8     9    10
-            |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|           
+            |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
         A   |  #{$b_g[1]}  |  #{$b_g[2]}  |  #{$b_g[3]}  |  #{$b_g[4]}  |  #{$b_g[5]}  |  #{$b_g[6]}  |  #{$b_g[7]}  |  #{$b_g[8]}  |  #{$b_g[9]}  |  #{$b_g[10]}  |
-            |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|           
+            |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
         B   |  #{$b_g[11]}  |  #{$b_g[12]}  |  #{$b_g[13]}  |  #{$b_g[14]}  |  #{$b_g[15]}  |  #{$b_g[16]}  |  #{$b_g[17]}  |  #{$b_g[18]}  |  #{$b_g[19]}  |  #{$b_g[20]}  |
-            |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|            
+            |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
         C   |  #{$b_g[21]}  |  #{$b_g[22]}  |  #{$b_g[23]}  |  #{$b_g[24]}  |  #{$b_g[25]}  |  #{$b_g[26]}  |  #{$b_g[27]}  |  #{$b_g[28]}  |  #{$b_g[29]}  |  #{$b_g[30]}  |
-            |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|               
+            |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
         D   |  #{$b_g[31]}  |  #{$b_g[32]}  |  #{$b_g[33]}  |  #{$b_g[34]}  |  #{$b_g[35]}  |  #{$b_g[36]}  |  #{$b_g[37]}  |  #{$b_g[38]}  |  #{$b_g[39]}  |  #{$b_g[40]}  |
-            |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|            
+            |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
         E   |  #{$b_g[41]}  |  #{$b_g[42]}  |  #{$b_g[43]}  |  #{$b_g[44]}  |  #{$b_g[45]}  |  #{$b_g[46]}  |  #{$b_g[47]}  |  #{$b_g[48]}  |  #{$b_g[49]}  |  #{$b_g[50]}  |
-            |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|            
+            |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
         F   |  #{$b_g[51]}  |  #{$b_g[52]}  |  #{$b_g[53]}  |  #{$b_g[54]}  |  #{$b_g[55]}  |  #{$b_g[56]}  |  #{$b_g[57]}  |  #{$b_g[58]}  |  #{$b_g[59]}  |  #{$b_g[60]}  |
-            |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|            
+            |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
         G   |  #{$b_g[61]}  |  #{$b_g[62]}  |  #{$b_g[63]}  |  #{$b_g[64]}  |  #{$b_g[65]}  |  #{$b_g[66]}  |  #{$b_g[67]}  |  #{$b_g[68]}  |  #{$b_g[69]}  |  #{$b_g[70]}  |
-            |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|               
+            |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
         H   |  #{$b_g[71]}  |  #{$b_g[72]}  |  #{$b_g[73]}  |  #{$b_g[74]}  |  #{$b_g[75]}  |  #{$b_g[76]}  |  #{$b_g[77]}  |  #{$b_g[78]}  |  #{$b_g[79]}  |  #{$b_g[80]}  |
-            |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|            
+            |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
         I   |  #{$b_g[81]}  |  #{$b_g[82]}  |  #{$b_g[83]}  |  #{$b_g[84]}  |  #{$b_g[85]}  |  #{$b_g[86]}  |  #{$b_g[87]}  |  #{$b_g[88]}  |  #{$b_g[89]}  |  #{$b_g[90]}  |
-            |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|            
+            |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
         J   |  #{$b_g[91]}  |  #{$b_g[92]}  |  #{$b_g[93]}  |  #{$b_g[94]}  |  #{$b_g[95]}  |  #{$b_g[96]}  |  #{$b_g[97]}  |  #{$b_g[98]}  |  #{$b_g[99]}  |  #{$b_g[100]}  |
-            |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|            
+            |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
         }
 
 puts grid
 
-end 
+end
 
 show_grid()
-
+# The hash converts the alphanumeric grid reference in to the variable name (1-100) that corresponds to the position on the grid.
 REFERENCE_HASH = {
     "A1" => 1,
     "A2" => 2,
@@ -70,7 +70,7 @@ REFERENCE_HASH = {
     "A8" => 8,
     "A9" => 9,
     "A10" => 10,
-    
+
     "B1" => 11,
     "B2" => 12,
     "B3" => 13,
@@ -181,15 +181,15 @@ REFERENCE_HASH = {
 # Visually these will be represented on the grid by their corresponding letter, e.g for a Carrier:
 
 # A
-# A    
+# A
 # A or AAAAA
 # A
 # A
 
-def place_carrier()
+def place_carrier() # This method is to place the first ship on the grid.
 
-# There is no space to position the Carrier horizontally outside squares A1 to J6 (inclusive)
-    valid_options_h =      ["A1", "A2", "A3", "A4", "A5", "A6", 
+# There is no space to position the Carrier horizontally outside squares A1 to J6 (inclusive), so these grid squares are whitelisted for error checking.
+    valid_options_h =      ["A1", "A2", "A3", "A4", "A5", "A6",
                             "B1", "B2", "B3", "B4", "B5", "B6",
                             "C1", "C2", "C3", "C4", "C5", "C6",
                             "D1", "D2", "D3", "D4", "D5", "D6",
@@ -214,14 +214,14 @@ def place_carrier()
     orientation = gets.chomp.upcase
     valid_orientation = nil
 
-    if orientation == "H" || orientation == "V"
+    if orientation == "H" || orientation == "V"       #The user has a binary choice, so any other input will be invalid.
         valid_orientation = true
-    else 
+    else
         valid_orientation = false
     end
 
     while valid_orientation == false
-        print "Please select a valid orientation ('H' or 'V'):" 
+        print "Please select a valid orientation ('H' or 'V'):"
         orientation = gets.chomp.upcase
         if orientation == "H" || orientation =="V"
             valid_orientation = true
@@ -230,39 +230,39 @@ def place_carrier()
 
     puts "Which grid reference is the starting point for the Carrier? (Remember it needs 5 squares of space!)"
     aircraft_carrier_s = gets.chomp.upcase
-    
 
+    #  If the grid space selected is not on the whitelist that corresponds to the chosen orientation, the ship will not fit:
     if orientation == "H"
         while !valid_options_h.include?(aircraft_carrier_s)
             puts "Oops! That grid reference was either invalid or did not allow enough space for the Carrier. Try again: "
             aircraft_carrier_s = gets.chomp.upcase
-        end 
+        end
     end
 
     if orientation == "V"
         while !valid_options_v.include?(aircraft_carrier_s)
             puts "Oops! That grid reference was either invalid or did not allow enough space for the Carrier. Try again: "
             aircraft_carrier_s = gets.chomp.upcase
-        end 
+        end
     end
-      
+
     if orientation == "H"
         $b_g[REFERENCE_HASH[aircraft_carrier_s]] = "C".colorize(:red).on_blue
         $b_g[REFERENCE_HASH[aircraft_carrier_s]+1] = "C".colorize(:red).on_blue
         $b_g[REFERENCE_HASH[aircraft_carrier_s]+2] = "C".colorize(:red).on_blue
         $b_g[REFERENCE_HASH[aircraft_carrier_s]+3] = "C".colorize(:red).on_blue
-        $b_g[REFERENCE_HASH[aircraft_carrier_s]+4] = "C".colorize(:red).on_blue      
-    else 
+        $b_g[REFERENCE_HASH[aircraft_carrier_s]+4] = "C".colorize(:red).on_blue
+    else
         $b_g[REFERENCE_HASH[aircraft_carrier_s]] = "C".colorize(:red).on_blue
         $b_g[REFERENCE_HASH[aircraft_carrier_s]+10] = "C".colorize(:red).on_blue
         $b_g[REFERENCE_HASH[aircraft_carrier_s]+20] = "C".colorize(:red).on_blue
         $b_g[REFERENCE_HASH[aircraft_carrier_s]+30] = "C".colorize(:red).on_blue
         $b_g[REFERENCE_HASH[aircraft_carrier_s]+40] = "C".colorize(:red).on_blue
-    end 
+    end
 
     show_grid()
 
-end 
+end
 
 place_carrier()
 
@@ -271,8 +271,8 @@ place_carrier()
 def place_destroyer()
 
 # There is no space to position the Destoyers horizontally outside the following squares (a larger whitelist than for Carriers as the ship is smaller))
-    d_valid_options_h =    ["A1", "A2", "A3", "A4", "A5", "A6", "A7", 
-                            "B1", "B2", "B3", "B4", "B5", "B6", "B7",   
+    d_valid_options_h =    ["A1", "A2", "A3", "A4", "A5", "A6", "A7",
+                            "B1", "B2", "B3", "B4", "B5", "B6", "B7",
                             "C1", "C2", "C3", "C4", "C5", "C6", "C7",
                             "D1", "D2", "D3", "D4", "D5", "D6", "D7",
                             "E1", "E2", "E3", "E4", "E5", "E6", "E7",
@@ -297,12 +297,12 @@ def place_destroyer()
 
     if orientation == "H" || orientation == "V"
         valid_orientation = true
-    else 
+    else
         valid_orientation = false
     end
 
     while valid_orientation == false
-        print "Please select a valid orientation ('H' or 'V'):" 
+        print "Please select a valid orientation ('H' or 'V'):"
         orientation = gets.chomp.upcase
         if orientation == "H" || orientation =="V"
             valid_orientation = true
@@ -312,22 +312,23 @@ def place_destroyer()
     puts "Which grid reference is the starting point for this Destroyer? (Remember it needs 4 squares of space!)"
     destroyer_s = gets.chomp.upcase
 
-# Error validation starts:
+# Error validation starts: The first check is that the grid reference chosen has been whitelisted
+# The second checks that the variables that corresponds to the grid reference and the grids to the right or below are all blank.
 
     if orientation == "H"
-        while  !d_valid_options_h.include?(destroyer_s) || $b_g[REFERENCE_HASH[destroyer_s]] != " " || $b_g[REFERENCE_HASH[destroyer_s]+1] != " " || $b_g[REFERENCE_HASH[destroyer_s]+2] != " " || $b_g[REFERENCE_HASH[destroyer_s]+3] != " "    
+        while  !d_valid_options_h.include?(destroyer_s) || $b_g[REFERENCE_HASH[destroyer_s]] != " " || $b_g[REFERENCE_HASH[destroyer_s]+1] != " " || $b_g[REFERENCE_HASH[destroyer_s]+2] != " " || $b_g[REFERENCE_HASH[destroyer_s]+3] != " "
                 puts "Oops! Either the grid reference range was invalid, did not have enough space, or contained spaces already taken. \\Please try again, remember you need 4 spaces."
                 destroyer_s = gets.chomp.upcase
         end
     end
 
     if orientation == "V"
-        while  !d_valid_options_v.include?(destroyer_s) || $b_g[REFERENCE_HASH[destroyer_s]] != " " || $b_g[REFERENCE_HASH[destroyer_s]+10] != " " || $b_g[REFERENCE_HASH[destroyer_s]+20] != " " || $b_g[REFERENCE_HASH[destroyer_s]+30] != " "    
+        while  !d_valid_options_v.include?(destroyer_s) || $b_g[REFERENCE_HASH[destroyer_s]] != " " || $b_g[REFERENCE_HASH[destroyer_s]+10] != " " || $b_g[REFERENCE_HASH[destroyer_s]+20] != " " || $b_g[REFERENCE_HASH[destroyer_s]+30] != " "
                 puts "Oops! Either the grid reference range was invalid, did not have enough space, or contained spaces already taken. \nPlease try again, remember you need 4 spaces."
                 destroyer_s = gets.chomp.upcase
         end
     end
-    
+
 # Error validation ends
 
     if orientation == "H"
@@ -335,16 +336,16 @@ def place_destroyer()
         $b_g[REFERENCE_HASH[destroyer_s]+1] = "D".colorize(:blue).on_red
         $b_g[REFERENCE_HASH[destroyer_s]+2] = "D".colorize(:blue).on_red
         $b_g[REFERENCE_HASH[destroyer_s]+3] = "D".colorize(:blue).on_red
-    else 
+    else
         $b_g[REFERENCE_HASH[destroyer_s]] = "D".colorize(:blue).on_red
         $b_g[REFERENCE_HASH[destroyer_s]+10] = "D".colorize(:blue).on_red
         $b_g[REFERENCE_HASH[destroyer_s]+20] = "D".colorize(:blue).on_red
         $b_g[REFERENCE_HASH[destroyer_s]+30] = "D".colorize(:blue).on_red
-    end 
+    end
 
     show_grid()
 
-end 
+end
 
 # Repeat for second Destroyer:
 place_destroyer()
@@ -353,7 +354,7 @@ place_destroyer()
 def place_submarine()
 
         s_valid_options_h =    ["A1", "A2", "A3", "A4", "A5", "A6", "A7", "A8",
-                                "B1", "B2", "B3", "B4", "B5", "B6", "B7", "B8",   
+                                "B1", "B2", "B3", "B4", "B5", "B6", "B7", "B8",
                                 "C1", "C2", "C3", "C4", "C5", "C6", "C7", "C8",
                                 "D1", "D2", "D3", "D4", "D5", "D6", "D7", "D8",
                                 "E1", "E2", "E3", "E4", "E5", "E6", "E7", "E8",
@@ -379,12 +380,12 @@ def place_submarine()
 
         if orientation == "H" || orientation == "V"
             valid_orientation = true
-        else 
+        else
             valid_orientation = false
         end
 
         while valid_orientation == false
-            print "Please select a valid orientation ('H' or 'V'):" 
+            print "Please select a valid orientation ('H' or 'V'):"
             orientation = gets.chomp.upcase
                 if orientation == "H" || orientation =="V"
                 valid_orientation = true
@@ -397,7 +398,7 @@ def place_submarine()
         # Error validation starts:
 
         if orientation == "H"
-            while  !s_valid_options_h.include?(submarine_s) || $b_g[REFERENCE_HASH[submarine_s]] != " " || $b_g[REFERENCE_HASH[submarine_s]+1] != " " || $b_g[REFERENCE_HASH[submarine_s]+2] != " "   
+            while  !s_valid_options_h.include?(submarine_s) || $b_g[REFERENCE_HASH[submarine_s]] != " " || $b_g[REFERENCE_HASH[submarine_s]+1] != " " || $b_g[REFERENCE_HASH[submarine_s]+2] != " "
             puts "Oops! Either the grid reference range was invalid, did not have enough space, or contained spaces already taken. \\Please try again, remember you need 3 spaces."
             submarine_s = gets.chomp.upcase
             end
@@ -416,11 +417,11 @@ def place_submarine()
         $b_g[REFERENCE_HASH[submarine_s]] = "S".colorize(:yellow).on_red
         $b_g[REFERENCE_HASH[submarine_s]+1] = "S".colorize(:yellow).on_red
         $b_g[REFERENCE_HASH[submarine_s]+2] = "S".colorize(:yellow).on_red
-        else 
+        else
         $b_g[REFERENCE_HASH[submarine_s]] = "S".colorize(:yellow).on_red
         $b_g[REFERENCE_HASH[submarine_s]+10] = "S".colorize(:yellow).on_red
         $b_g[REFERENCE_HASH[submarine_s]+20] = "S".colorize(:yellow).on_red
-        end 
+        end
 
 show_grid()
 
@@ -431,7 +432,7 @@ place_submarine()
 def place_minesweeper()
 
     m_valid_options_h =    ["A1", "A2", "A3", "A4", "A5", "A6", "A7", "A8", "A9",
-                            "B1", "B2", "B3", "B4", "B5", "B6", "B7", "B8", "B9",   
+                            "B1", "B2", "B3", "B4", "B5", "B6", "B7", "B8", "B9",
                             "C1", "C2", "C3", "C4", "C5", "C6", "C7", "C8", "C9",
                             "D1", "D2", "D3", "D4", "D5", "D6", "D7", "D8", "D9",
                             "E1", "E2", "E3", "E4", "E5", "E6", "E7", "E8", "E9",
@@ -458,12 +459,12 @@ def place_minesweeper()
 
     if orientation == "H" || orientation == "V"
         valid_orientation = true
-    else 
+    else
         valid_orientation = false
     end
 
     while valid_orientation == false
-        print "Please select a valid orientation ('H' or 'V'):" 
+        print "Please select a valid orientation ('H' or 'V'):"
         orientation = gets.chomp.upcase
             if orientation == "H" || orientation =="V"
             valid_orientation = true
@@ -476,7 +477,7 @@ def place_minesweeper()
     # Error validation starts:
 
     if orientation == "H"
-        while  !m_valid_options_h.include?(minesweeper_s) || $b_g[REFERENCE_HASH[minesweeper_s]] != " " || $b_g[REFERENCE_HASH[minesweeper_s]+1] != " "   
+        while  !m_valid_options_h.include?(minesweeper_s) || $b_g[REFERENCE_HASH[minesweeper_s]] != " " || $b_g[REFERENCE_HASH[minesweeper_s]+1] != " "
         puts "Oops! Either the grid reference range was invalid, did not have enough space, or contained spaces already taken. \\Please try again, remember you need 2 spaces."
         minesweeper_s = gets.chomp.upcase
         end
@@ -494,10 +495,10 @@ def place_minesweeper()
     if orientation == "H"
     $b_g[REFERENCE_HASH[minesweeper_s]] = "M".colorize(:black).on_white
     $b_g[REFERENCE_HASH[minesweeper_s]+1] = "M".colorize(:black).on_white
-    else 
+    else
     $b_g[REFERENCE_HASH[minesweeper_s]] = "M".colorize(:black).on_white
     $b_g[REFERENCE_HASH[minesweeper_s]+10] = "M".colorize(:black).on_white
-    end 
+    end
 
 show_grid()
 
