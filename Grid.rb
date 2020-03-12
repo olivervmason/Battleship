@@ -328,20 +328,6 @@ def place_destroyer()
         end
     end
     
-    # if orientation == "H"
-    #     while !d_valid_options_h.include?(destroyer_s)
-    #         puts "Oops! That grid reference was either invalid or did not allow enough space for the Destroyer. Try again: "
-    #         destroyer_s = gets.chomp.upcase
-    #     end 
-    # end
-
-    # if orientation =="V"    
-    #     while !d_valid_options_v.include?(destroyer_s)
-    #         puts "Oops! That grid reference was either invalid or did not allow enough space for the Destroyer. Try again: "
-    #         destroyer_s = gets.chomp.upcase
-    #     end 
-    # end
-
 # Error validation ends
 
     if orientation == "H"
@@ -424,21 +410,6 @@ def place_submarine()
             end
         end
 
-
-        # if orientation == "H"
-        #     while !s_valid_options_h.include?(submarine_s)
-        #     puts "Oops! That grid reference was either invalid or did not allow enough space for the submarine. Try again: "
-        #     submarine_s = gets.chomp.upcase
-        #     end 
-        # end
-
-        # if orientation =="V"    
-        #     while !s_valid_options_v.include?(submarine_s)
-        #     puts "Oops! That grid reference was either invalid or did not allow enough space for the Destoyer. Try again: "
-        #     submarine_s = gets.chomp.upcase
-        #     end 
-        # end
-
         # Error validation ends
 
         if orientation == "H"
@@ -517,21 +488,6 @@ def place_minesweeper()
         minesweeper_s = gets.chomp.upcase
         end
     end
-
-
-    # if orientation == "H"
-    #     while !m_valid_options_h.include?(minesweeper_s)
-    #     puts "Oops! That grid reference was either invalid or did not allow enough space for the Minesweeper (2 spaces). Try again: "
-    #     submarine_s = gets.chomp.upcase
-    #     end 
-    # end
-
-    # if orientation =="V"    
-    #     while !m_valid_options_v.include?(minesweeper_s)
-    #     puts "Oops! That grid reference was either invalid or did not allow enough space for the Minsweeper (2 spaces). Try again: "
-    #     submarine_s = gets.chomp.upcase
-    #     end 
-    # end
 
     # Error validation ends
 
