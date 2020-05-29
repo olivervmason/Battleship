@@ -1,4 +1,15 @@
-## **Terminal Ruby Battleship game**  <br>
+<p>The text below the line is documentation from the submitted bootcamp project, which was completed over 3 days within the first 3 weeks of learning to code.
+
+The progress to that point has been archived in a separate branch. It is my intention to continue developing it during the break periods to:
+
+- Complete the full range of functionality;
+- To ¨DRY up" the code;
+- To implement it in the MVC model.</p>
+
+<hr>
+<!------------------------------------------------------------------ -->
+
+<h3>Terminal Ruby Battleship game</h3>  <br>
 
 The source control repository is located at: https://github.com/olivervmason/Battleship
 
