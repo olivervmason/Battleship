@@ -1,3 +1,5 @@
+# Home fleet grid:
+
 def show_grid()
     clear_terminal
     grid = %{
@@ -25,6 +27,47 @@ def show_grid()
         |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
     }
 
+a = Artii::Base.new
+puts a.asciify('Home Fleet')    
 puts grid
 
 end
+
+# ----------------------------------------------------------------------------------------------
+
+# Enemy fleet grid:
+
+def show_enemy_grid()
+    clear_terminal
+
+    a = Artii::Base.new
+    puts a.asciify('Enemy Fleet')
+
+    grid = %{
+           1     2     3     4     5     6     7     8     9    10
+        |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|           
+    A   |  #{$enemy_b_g[1]}  |  #{$enemy_b_g[2]}  |  #{$enemy_b_g[3]}  |  #{$enemy_b_g[4]}  |  #{$enemy_b_g[5]}  |  #{$enemy_b_g[6]}  |  #{$enemy_b_g[7]}  |  #{$enemy_b_g[8]}  |  #{$enemy_b_g[9]}  |  #{$enemy_b_g[10]}  |
+        |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|           
+    B   |  #{$enemy_b_g[11]}  |  #{$enemy_b_g[12]}  |  #{$enemy_b_g[13]}  |  #{$enemy_b_g[14]}  |  #{$enemy_b_g[15]}  |  #{$enemy_b_g[16]}  |  #{$enemy_b_g[17]}  |  #{$enemy_b_g[18]}  |  #{$enemy_b_g[19]}  |  #{$enemy_b_g[20]}  |
+        |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|            
+    C   |  #{$enemy_b_g[21]}  |  #{$enemy_b_g[22]}  |  #{$enemy_b_g[23]}  |  #{$enemy_b_g[24]}  |  #{$enemy_b_g[25]}  |  #{$enemy_b_g[26]}  |  #{$enemy_b_g[27]}  |  #{$enemy_b_g[28]}  |  #{$enemy_b_g[29]}  |  #{$enemy_b_g[30]}  |
+        |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|               
+    D   |  #{$enemy_b_g[31]}  |  #{$enemy_b_g[32]}  |  #{$enemy_b_g[33]}  |  #{$enemy_b_g[34]}  |  #{$enemy_b_g[35]}  |  #{$enemy_b_g[36]}  |  #{$enemy_b_g[37]}  |  #{$enemy_b_g[38]}  |  #{$enemy_b_g[39]}  |  #{$enemy_b_g[40]}  |
+        |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|            
+    E   |  #{$enemy_b_g[41]}  |  #{$enemy_b_g[42]}  |  #{$enemy_b_g[43]}  |  #{$enemy_b_g[44]}  |  #{$enemy_b_g[45]}  |  #{$enemy_b_g[46]}  |  #{$enemy_b_g[47]}  |  #{$enemy_b_g[48]}  |  #{$enemy_b_g[49]}  |  #{$enemy_b_g[50]}  |
+        |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|            
+    F   |  #{$enemy_b_g[51]}  |  #{$enemy_b_g[52]}  |  #{$enemy_b_g[53]}  |  #{$enemy_b_g[54]}  |  #{$enemy_b_g[55]}  |  #{$enemy_b_g[56]}  |  #{$enemy_b_g[57]}  |  #{$enemy_b_g[58]}  |  #{$enemy_b_g[59]}  |  #{$enemy_b_g[60]}  |
+        |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|            
+    G   |  #{$enemy_b_g[61]}  |  #{$enemy_b_g[62]}  |  #{$enemy_b_g[63]}  |  #{$enemy_b_g[64]}  |  #{$enemy_b_g[65]}  |  #{$enemy_b_g[66]}  |  #{$enemy_b_g[67]}  |  #{$enemy_b_g[68]}  |  #{$enemy_b_g[69]}  |  #{$enemy_b_g[70]}  |
+        |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|               
+    H   |  #{$enemy_b_g[71]}  |  #{$enemy_b_g[72]}  |  #{$enemy_b_g[73]}  |  #{$enemy_b_g[74]}  |  #{$enemy_b_g[75]}  |  #{$enemy_b_g[76]}  |  #{$enemy_b_g[77]}  |  #{$enemy_b_g[78]}  |  #{$enemy_b_g[79]}  |  #{$enemy_b_g[80]}  |
+        |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|            
+    I   |  #{$enemy_b_g[81]}  |  #{$enemy_b_g[82]}  |  #{$enemy_b_g[83]}  |  #{$enemy_b_g[84]}  |  #{$enemy_b_g[85]}  |  #{$enemy_b_g[86]}  |  #{$enemy_b_g[87]}  |  #{$enemy_b_g[88]}  |  #{$enemy_b_g[89]}  |  #{$enemy_b_g[90]}  |
+        |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|            
+    J   |  #{$enemy_b_g[91]}  |  #{$enemy_b_g[92]}  |  #{$enemy_b_g[93]}  |  #{$enemy_b_g[94]}  |  #{$enemy_b_g[95]}  |  #{$enemy_b_g[96]}  |  #{$enemy_b_g[97]}  |  #{$enemy_b_g[98]}  |  #{$enemy_b_g[99]}  |  #{$enemy_b_g[100]}  |
+        |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|            
+    }
+
+    puts grid
+
+end 
