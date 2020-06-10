@@ -8,7 +8,7 @@ require_relative "./controller"         # Link to game Controller file
          
 
 welcome_user()
-sleep(1.5)
+sleep(2.5)
 
 # --------------------------------------------GAME SETUP-----------------------------------------------------
 
@@ -48,26 +48,32 @@ end
 show_grid()
 puts "This is your Battle Group!"
 
-sleep(1.5)
+sleep(2.5)
 
 # # --------------------------------------------USER GAME PLAY-----------------------------------------------------
 
-while @user_score <= 20
+while @user_score <= 20 && @computer_score <= 20
+
+    # User shoot sequence:
+
     show_enemy_grid                       # Left as a "cheat" feature and for testing purposes
     hidden_enemy_grid
     user_fire
-    sleep(1.5)
+    sleep(2.5)
     hidden_enemy_grid
     percentage_completion = @user_score * 5.to_f
     puts "Your score is #{@user_score}; a score 20 of is needed to win. #{percentage_completion}% complete"
-    sleep(1.5)
-end
+    sleep(2.5)
 
-while @computer_score < 20
+    # Computer shoot sequence:
+
+    clear_terminal()
     puts "Enemy fire incoming!"
     computer_fire()
-    # sleep(1.5)
+    sleep(2.5)
     show_grid()
+    puts "This is the current state of your fleet."
+    sleep(2.5)
     survival_score = 100 - (@computer_score * 5.to_f)
     puts "The enemy score is #{@computer_score}; #{survival_score}% of the Home fleet remains."
 end
