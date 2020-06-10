@@ -1,4 +1,4 @@
-# Home fleet grid:
+# Build/show Home grid:
 
 def show_grid()
     clear_terminal
@@ -27,15 +27,15 @@ def show_grid()
         |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
     }
 
-a = Artii::Base.new
-puts a.asciify('Home Fleet')    
-puts grid
+    a = Artii::Base.new
+    puts a.asciify('Home Fleet')    
+    puts grid
 
 end
 
 # ----------------------------------------------------------------------------------------------
 
-# Enemy fleet grid:
+# Build/show Enemy fleet grid WITH the ships positions:
 
 def show_enemy_grid()
     clear_terminal
@@ -71,3 +71,39 @@ def show_enemy_grid()
     puts grid
 
 end 
+
+
+def hidden_enemy_grid()
+    clear_terminal
+
+    a = Artii::Base.new
+    puts a.asciify('Target area')
+
+    grid = %{
+           1     2     3     4     5     6     7     8     9    10
+        |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|           
+    A   |  #{$hidden_enemy_b_g[1]}  |  #{$hidden_enemy_b_g[2]}  |  #{$hidden_enemy_b_g[3]}  |  #{$hidden_enemy_b_g[4]}  |  #{$hidden_enemy_b_g[5]}  |  #{$hidden_enemy_b_g[6]}  |  #{$hidden_enemy_b_g[7]}  |  #{$hidden_enemy_b_g[8]}  |  #{$hidden_enemy_b_g[9]}  |  #{$hidden_enemy_b_g[10]}  |
+        |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|           
+    B   |  #{$hidden_enemy_b_g[11]}  |  #{$hidden_enemy_b_g[12]}  |  #{$hidden_enemy_b_g[13]}  |  #{$hidden_enemy_b_g[14]}  |  #{$hidden_enemy_b_g[15]}  |  #{$hidden_enemy_b_g[16]}  |  #{$hidden_enemy_b_g[17]}  |  #{$hidden_enemy_b_g[18]}  |  #{$hidden_enemy_b_g[19]}  |  #{$hidden_enemy_b_g[20]}  |
+        |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|            
+    C   |  #{$hidden_enemy_b_g[21]}  |  #{$hidden_enemy_b_g[22]}  |  #{$hidden_enemy_b_g[23]}  |  #{$hidden_enemy_b_g[24]}  |  #{$hidden_enemy_b_g[25]}  |  #{$hidden_enemy_b_g[26]}  |  #{$hidden_enemy_b_g[27]}  |  #{$hidden_enemy_b_g[28]}  |  #{$hidden_enemy_b_g[29]}  |  #{$hidden_enemy_b_g[30]}  |
+        |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|               
+    D   |  #{$hidden_enemy_b_g[31]}  |  #{$hidden_enemy_b_g[32]}  |  #{$hidden_enemy_b_g[33]}  |  #{$hidden_enemy_b_g[34]}  |  #{$hidden_enemy_b_g[35]}  |  #{$hidden_enemy_b_g[36]}  |  #{$hidden_enemy_b_g[37]}  |  #{$hidden_enemy_b_g[38]}  |  #{$hidden_enemy_b_g[39]}  |  #{$hidden_enemy_b_g[40]}  |
+        |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|            
+    E   |  #{$hidden_enemy_b_g[41]}  |  #{$hidden_enemy_b_g[42]}  |  #{$hidden_enemy_b_g[43]}  |  #{$hidden_enemy_b_g[44]}  |  #{$hidden_enemy_b_g[45]}  |  #{$hidden_enemy_b_g[46]}  |  #{$hidden_enemy_b_g[47]}  |  #{$hidden_enemy_b_g[48]}  |  #{$hidden_enemy_b_g[49]}  |  #{$hidden_enemy_b_g[50]}  |
+        |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|            
+    F   |  #{$hidden_enemy_b_g[51]}  |  #{$hidden_enemy_b_g[52]}  |  #{$hidden_enemy_b_g[53]}  |  #{$hidden_enemy_b_g[54]}  |  #{$hidden_enemy_b_g[55]}  |  #{$hidden_enemy_b_g[56]}  |  #{$hidden_enemy_b_g[57]}  |  #{$hidden_enemy_b_g[58]}  |  #{$hidden_enemy_b_g[59]}  |  #{$hidden_enemy_b_g[60]}  |
+        |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|            
+    G   |  #{$hidden_enemy_b_g[61]}  |  #{$hidden_enemy_b_g[62]}  |  #{$hidden_enemy_b_g[63]}  |  #{$hidden_enemy_b_g[64]}  |  #{$hidden_enemy_b_g[65]}  |  #{$hidden_enemy_b_g[66]}  |  #{$hidden_enemy_b_g[67]}  |  #{$hidden_enemy_b_g[68]}  |  #{$hidden_enemy_b_g[69]}  |  #{$hidden_enemy_b_g[70]}  |
+        |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|               
+    H   |  #{$hidden_enemy_b_g[71]}  |  #{$hidden_enemy_b_g[72]}  |  #{$hidden_enemy_b_g[73]}  |  #{$hidden_enemy_b_g[74]}  |  #{$hidden_enemy_b_g[75]}  |  #{$hidden_enemy_b_g[76]}  |  #{$hidden_enemy_b_g[77]}  |  #{$hidden_enemy_b_g[78]}  |  #{$hidden_enemy_b_g[79]}  |  #{$hidden_enemy_b_g[80]}  |
+        |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|            
+    I   |  #{$hidden_enemy_b_g[81]}  |  #{$hidden_enemy_b_g[82]}  |  #{$hidden_enemy_b_g[83]}  |  #{$hidden_enemy_b_g[84]}  |  #{$hidden_enemy_b_g[85]}  |  #{$hidden_enemy_b_g[86]}  |  #{$hidden_enemy_b_g[87]}  |  #{$hidden_enemy_b_g[88]}  |  #{$hidden_enemy_b_g[89]}  |  #{$hidden_enemy_b_g[90]}  |
+        |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|            
+    J   |  #{$hidden_enemy_b_g[91]}  |  #{$hidden_enemy_b_g[92]}  |  #{$hidden_enemy_b_g[93]}  |  #{$hidden_enemy_b_g[94]}  |  #{$hidden_enemy_b_g[95]}  |  #{$hidden_enemy_b_g[96]}  |  #{$hidden_enemy_b_g[97]}  |  #{$hidden_enemy_b_g[98]}  |  #{$hidden_enemy_b_g[99]}  |  #{$hidden_enemy_b_g[100]}  |
+        |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|            
+    }
+
+    puts grid
+
+end

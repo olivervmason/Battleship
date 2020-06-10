@@ -1,24 +1,3 @@
-require_relative "./reference_hash"
-
-# This method is to give the computer a binary choice for orientating each of its ships:
-
-def h_or_v()                              
-    h_choice = rand(0..1)
-    if h_choice == 0
-        return "H"
-    else
-        return "V"
-    end
-end
-
-# This method selects a random grid alpha numberic reference. This will be used by the computer to place its ships, and later to fire on the user fleet,
-
-def rand_gr()                               
-    array_choice = REFERENCE_HASH.to_a
-    guess = rand(0..99)
-    return array_choice[guess][0]
-end
-
 
 def place_enemy_carrier() # This method is to place the first ship on the grid.
     
@@ -78,21 +57,19 @@ def place_enemy_carrier() # This method is to place the first ship on the grid.
             end 
         end
       
-            if orientation == "H"
-                $enemy_b_g[REFERENCE_HASH[aircraft_carrier_s]] = "C".colorize(:red).on_blue
-                $enemy_b_g[REFERENCE_HASH[aircraft_carrier_s]+1] = "C".colorize(:red).on_blue
-                $enemy_b_g[REFERENCE_HASH[aircraft_carrier_s]+2] = "C".colorize(:red).on_blue
-                $enemy_b_g[REFERENCE_HASH[aircraft_carrier_s]+3] = "C".colorize(:red).on_blue
-                $enemy_b_g[REFERENCE_HASH[aircraft_carrier_s]+4] = "C".colorize(:red).on_blue      
-            else 
-                $enemy_b_g[REFERENCE_HASH[aircraft_carrier_s]] = "C".colorize(:red).on_blue
-                $enemy_b_g[REFERENCE_HASH[aircraft_carrier_s]+10] = "C".colorize(:red).on_blue
-                $enemy_b_g[REFERENCE_HASH[aircraft_carrier_s]+20] = "C".colorize(:red).on_blue
-                $enemy_b_g[REFERENCE_HASH[aircraft_carrier_s]+30] = "C".colorize(:red).on_blue
-                $enemy_b_g[REFERENCE_HASH[aircraft_carrier_s]+40] = "C".colorize(:red).on_blue
-            end 
-
-    show_enemy_grid()
+        if orientation == "H"
+            $enemy_b_g[REFERENCE_HASH[aircraft_carrier_s]] = "C".colorize(:red).on_blue
+            $enemy_b_g[REFERENCE_HASH[aircraft_carrier_s]+1] = "C".colorize(:red).on_blue
+            $enemy_b_g[REFERENCE_HASH[aircraft_carrier_s]+2] = "C".colorize(:red).on_blue
+            $enemy_b_g[REFERENCE_HASH[aircraft_carrier_s]+3] = "C".colorize(:red).on_blue
+            $enemy_b_g[REFERENCE_HASH[aircraft_carrier_s]+4] = "C".colorize(:red).on_blue      
+        else 
+            $enemy_b_g[REFERENCE_HASH[aircraft_carrier_s]] = "C".colorize(:red).on_blue
+            $enemy_b_g[REFERENCE_HASH[aircraft_carrier_s]+10] = "C".colorize(:red).on_blue
+            $enemy_b_g[REFERENCE_HASH[aircraft_carrier_s]+20] = "C".colorize(:red).on_blue
+            $enemy_b_g[REFERENCE_HASH[aircraft_carrier_s]+30] = "C".colorize(:red).on_blue
+            $enemy_b_g[REFERENCE_HASH[aircraft_carrier_s]+40] = "C".colorize(:red).on_blue
+        end 
 
 end 
 
@@ -173,8 +150,6 @@ def place_enemy_destroyer()
         $enemy_b_g[REFERENCE_HASH[destroyer_s]+30] = "D".colorize(:blue).on_red
     end 
 
-    show_enemy_grid()
-
 end 
 
 
@@ -251,8 +226,6 @@ def place_enemy_submarine()
         $enemy_b_g[REFERENCE_HASH[submarine_s]+20] = "S".colorize(:yellow).on_red
         end 
 
-    show_enemy_grid()
-
 end
 
 
@@ -326,8 +299,6 @@ def place_enemy_minesweeper()
     $enemy_b_g[REFERENCE_HASH[minesweeper_s]] = "M".colorize(:black).on_white
     $enemy_b_g[REFERENCE_HASH[minesweeper_s]+10] = "M".colorize(:black).on_white
     end 
-
-    show_enemy_grid()
 
 end
 

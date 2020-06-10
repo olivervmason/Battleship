@@ -1,5 +1,4 @@
 
-
 def place_carrier() # This method is to place the first ship on the grid.
     
     # There is no space to position the Carrier horizontally outside squares A1 to J6 (inclusive), so these grid squares are whitelisted for error checking.
