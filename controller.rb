@@ -5,6 +5,8 @@ require_relative "./reference_hash"
 
 @user_score = 0
 @computer_score = 0
+@user_previous_shots = []
+@computer_previous_shots = []
 
 def welcome_user
     a = Artii::Base.new
@@ -66,10 +68,17 @@ def user_fire
 
     shot_coordinate = gets.chomp.upcase
 
-    while !target_grid.include?(shot_coordinate)
+    while @user_previous_shots.include?(shot_coordinate)
+        puts "You cannot shoot at the same grid reference twice. Please try again."
+        shot_coordinate = gets.chomp.upcase
+    end
+
+    while !target_grid.include?(shot_coordinate) 
         puts "#{shot_coordinate} is an invalid grid reference. Please enter a valid reference in the range A1:J10:"
         shot_coordinate = gets.chomp.upcase
     end
+
+    @user_previous_shots.unshift(shot_coordinate)
 
     if $enemy_b_g[REFERENCE_HASH[shot_coordinate]] != " "
         puts "#{shot_coordinate} is a direct hit!"
@@ -79,6 +88,8 @@ def user_fire
         puts "#{shot_coordinate} missed!"
         $hidden_enemy_b_g[REFERENCE_HASH[shot_coordinate]] = "O".colorize(:blue)
     end
+
+    puts "Previous shots contains: #{@user_previous_shots}"
 
 end
 
@@ -102,7 +113,7 @@ def computer_fire
     end
 
     if  $b_g[REFERENCE_HASH[shot_coordinate]] != " "
-        puts "You have been hit!"
+        puts "You have been hit at #{shot_coordinate}!"
         @computer_score = @computer_score + 1
         $b_g[REFERENCE_HASH[shot_coordinate]] = "X".colorize(:red)
     else

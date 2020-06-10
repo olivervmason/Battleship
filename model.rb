@@ -50,7 +50,7 @@ place_enemy_submarine()
 place_enemy_minesweeper()           
 place_enemy_minesweeper()
 
-# --------------------------------------------USER GAME PLAY-----------------------------------------------------
+# # --------------------------------------------USER GAME PLAY-----------------------------------------------------
 
 while @user_score <= 20
     show_enemy_grid                       # Left as a "cheat" feature and for testing purposes
@@ -63,16 +63,16 @@ while @user_score <= 20
     sleep(1.5)
 end
 
-while @computer_score <= 20
-    puts "Enemy fire incoming!"
-    computer_fire()
-    sleep(2.5)
-    show_grid()
-    survival_score = 100 - (@computer_score * 5.to_f)
-    puts "The enemy score is #{@computer_score}; #{survival_score}% of the Home fleet remains."
-end
+# while @computer_score < 20
+#     puts "Enemy fire incoming!"
+#     computer_fire()
+#     # sleep(1.5)
+#     show_grid()
+#     survival_score = 100 - (@computer_score * 5.to_f)
+#     puts "The enemy score is #{@computer_score}; #{survival_score}% of the Home fleet remains."
+# end
 
-# --------------------------------------------END OF GAME MESSAGE-------------------------------------------------
+# # --------------------------------------------END OF GAME MESSAGE-------------------------------------------------
 
 if @user_score > 20
     winning_message()
