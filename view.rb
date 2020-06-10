@@ -1,7 +1,7 @@
 # Build/show Home grid:
 
 def show_grid()
-    clear_terminal
+    clear_terminal()
     grid = %{
            1     2     3     4     5     6     7     8     9    10
         |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
@@ -38,7 +38,7 @@ end
 # Build/show Enemy fleet grid WITH the ships positions:
 
 def show_enemy_grid()
-    clear_terminal
+    clear_terminal()
 
     a = Artii::Base.new
     puts a.asciify('Enemy Fleet')
@@ -74,7 +74,7 @@ end
 
 
 def hidden_enemy_grid()
-    clear_terminal
+    clear_terminal()
 
     a = Artii::Base.new
     puts a.asciify('Target area')
