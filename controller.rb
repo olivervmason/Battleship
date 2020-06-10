@@ -68,13 +68,8 @@ def user_fire
 
     shot_coordinate = gets.chomp.upcase
 
-    while @user_previous_shots.include?(shot_coordinate)
-        puts "You cannot shoot at the same grid reference twice. Please try again."
-        shot_coordinate = gets.chomp.upcase
-    end
-
-    while !target_grid.include?(shot_coordinate) 
-        puts "#{shot_coordinate} is an invalid grid reference. Please enter a valid reference in the range A1:J10:"
+    while @user_previous_shots.include?(shot_coordinate) || !target_grid.include?(shot_coordinate)
+        puts "Please check that #{shot_coordinate} is a valid grid reference. \nNote that you cannot shoot at the same grid reference twice. \nPlease try again."
         shot_coordinate = gets.chomp.upcase
     end
 
@@ -108,9 +103,11 @@ def computer_fire
 
     shot_coordinate = rand_gr()
 
-    while !target_grid.include?(shot_coordinate)
+    while @computer_previous_shots.include?(shot_coordinate) || !target_grid.include?(shot_coordinate)
         shot_coordinate = rand_gr()
     end
+
+    @computer_previous_shots.unshift(shot_coordinate)
 
     if  $b_g[REFERENCE_HASH[shot_coordinate]] != " "
         puts "You have been hit at #{shot_coordinate}!"

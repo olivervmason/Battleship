@@ -14,6 +14,13 @@ sleep(1.5)
 
 create_grid_arrays()
 
+place_enemy_carrier()
+place_enemy_destroyer()
+place_enemy_destroyer()
+place_enemy_submarine()         
+place_enemy_minesweeper()           
+place_enemy_minesweeper()
+
 show_grid()
 puts "This is the grid we will be using."
 
@@ -43,13 +50,6 @@ puts "This is your Battle Group!"
 
 sleep(1.5)
 
-place_enemy_carrier()
-place_enemy_destroyer()
-place_enemy_destroyer()
-place_enemy_submarine()         
-place_enemy_minesweeper()           
-place_enemy_minesweeper()
-
 # # --------------------------------------------USER GAME PLAY-----------------------------------------------------
 
 while @user_score <= 20
@@ -63,14 +63,14 @@ while @user_score <= 20
     sleep(1.5)
 end
 
-# while @computer_score < 20
-#     puts "Enemy fire incoming!"
-#     computer_fire()
-#     # sleep(1.5)
-#     show_grid()
-#     survival_score = 100 - (@computer_score * 5.to_f)
-#     puts "The enemy score is #{@computer_score}; #{survival_score}% of the Home fleet remains."
-# end
+while @computer_score < 20
+    puts "Enemy fire incoming!"
+    computer_fire()
+    # sleep(1.5)
+    show_grid()
+    survival_score = 100 - (@computer_score * 5.to_f)
+    puts "The enemy score is #{@computer_score}; #{survival_score}% of the Home fleet remains."
+end
 
 # # --------------------------------------------END OF GAME MESSAGE-------------------------------------------------
 
