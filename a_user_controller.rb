@@ -1,3 +1,4 @@
+# This controller contains the Methods for automatically setting the players' own fleet.
 
 def auto_place_carrier() # This method is to place the first ship on the grid.
     
@@ -45,14 +46,12 @@ def auto_place_carrier() # This method is to place the first ship on the grid.
     
         if orientation == "H"
             while !valid_options_h.include?(aircraft_carrier_s)
-                # puts "Oops! That grid reference was either invalid or did not allow enough space for the Carrier (5 spaces). Try again: "
                 aircraft_carrier_s = rand_gr()
             end 
         end
 
         if orientation == "V"
             while !valid_options_v.include?(aircraft_carrier_s)
-                # puts "Oops! That grid reference was either invalid or did not allow enough space for the Carrier (5 spaces). Try again: "
                 aircraft_carrier_s = rand_gr()
             end 
         end
@@ -95,8 +94,6 @@ def auto_place_destroyer()
                             "F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F9", "F10",
                             "G1", "G2", "G3", "G4", "G5", "G6", "G7", "G8", "G9", "G10"]
 
-    # puts "Time to position the Destoyers! Do you want to position this one horizontally ('H') or vertically ('V')?   "
-
     orientation = h_or_v()
     valid_orientation = nil
 
@@ -114,14 +111,12 @@ def auto_place_destroyer()
         end
     end
 
-    # puts "Which grid reference is the starting point for this destroyer? (Remember it needs 4 squares of space!)"
     destroyer_s = rand_gr()
 
     # Error validation  - ship must be both within the grid and not overlapping any other ships:
 
         if orientation == "H"
             while  !d_valid_options_h.include?(destroyer_s) || $b_g[REFERENCE_HASH[destroyer_s]] != " " || $b_g[REFERENCE_HASH[destroyer_s]+1] != " " || $b_g[REFERENCE_HASH[destroyer_s]+2] != " " || $b_g[REFERENCE_HASH[destroyer_s]+3] != " "    
-                # puts "Oops! One of those grid references is already taken. Please try again."
                 destroyer_s = rand_gr()
             end
             not_overlapping = true
@@ -129,7 +124,6 @@ def auto_place_destroyer()
 
         if orientation == "V"
             while !d_valid_options_v.include?(destroyer_s) ||  $b_g[REFERENCE_HASH[destroyer_s]] != " " || $b_g[REFERENCE_HASH[destroyer_s]+10] != " " || $b_g[REFERENCE_HASH[destroyer_s]+20] != " " || $b_g[REFERENCE_HASH[destroyer_s]+30] != " "    
-                # puts "Oops! One of those grid references is already taken. Please try again."
                 destroyer_s = rand_gr()
             end
             not_overlapping = true
@@ -187,7 +181,6 @@ def auto_place_submarine()
         end
 
         while valid_orientation == false
-            # print "Please select a valid orientation ('H' or 'V'):" 
             orientation = h_or_v()
                 if orientation == "H" || orientation =="V"
                 valid_orientation = true
@@ -202,14 +195,12 @@ def auto_place_submarine()
 
         if orientation == "H"
             while  !s_valid_options_h.include?(submarine_s) || $b_g[REFERENCE_HASH[submarine_s]] != " " || $b_g[REFERENCE_HASH[submarine_s]+1] != " " || $b_g[REFERENCE_HASH[submarine_s]+2] != " "   
-            # puts "Oops! One of those grid references is already taken. Please try again."
             submarine_s = rand_gr()
             end
         end
 
         if orientation == "V"
             while  !s_valid_options_v.include?(submarine_s) || $b_g[REFERENCE_HASH[submarine_s]] != " " || $b_g[REFERENCE_HASH[submarine_s]+10] != " " || $b_g[REFERENCE_HASH[submarine_s]+20] != " "
-            # puts "Oops! One of those grid references is already taken. Please try again."
             submarine_s = rand_gr()
             end
         end
@@ -252,8 +243,6 @@ def auto_place_minesweeper()
                             "H1", "H2", "H3", "H4", "H5", "H6", "H7", "H8", "H9", "H10",
                             "I1", "I2", "I3", "I4", "I5", "I6", "I7", "I8", "I9", "I10"]
 
-    # puts "It is dirty work but someone has to do it. Do you want to position this minesweeper horizontally ('H') or vertically ('V')?   "
-
     orientation = h_or_v()
     valid_orientation = nil
 
@@ -264,28 +253,24 @@ def auto_place_minesweeper()
     end
 
     while valid_orientation == false
-        # print "Please select a valid orientation ('H' or 'V'):" 
         orientation = h_or_v()
             if orientation == "H" || orientation =="V"
             valid_orientation = true
         end
     end
 
-    # puts "Which grid reference is the starting point for the Minesweeper? (Remember it needs 3 squares of space!)"
     minesweeper_s = rand_gr()
 
     # Error validation starts:
 
     if orientation == "H"
         while  !m_valid_options_h.include?(minesweeper_s) || $b_g[REFERENCE_HASH[minesweeper_s]] != " " || $b_g[REFERENCE_HASH[minesweeper_s]+1] != " "    
-        # puts "Oops! One of those grid references is already taken. Please try again."
         minesweeper_s = rand_gr()
         end
     end
 
     if orientation == "V"
         while  !m_valid_options_v.include?(minesweeper_s) || $b_g[REFERENCE_HASH[minesweeper_s]] != " " || $b_g[REFERENCE_HASH[minesweeper_s]+10] != " "
-        # puts "Oops! One of those grid references is already taken. Please try again."
         minesweeper_s = rand_gr()
         end
     end

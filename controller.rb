@@ -3,9 +3,9 @@ require_relative "./a_user_controller"
 require_relative "./auto_grid_controller"
 require_relative "./reference_hash"
 
-@user_score = 0
+@user_score = 0                                     # User or Computer score of hits needs to reach 20 to win
 @computer_score = 0
-@user_previous_shots = []
+@user_previous_shots = []                           # Arrays used to record previous shots to avoid duplicates
 @computer_previous_shots = []
 
 def welcome_user
@@ -23,19 +23,19 @@ def losing_message
     puts a.asciify('GAME OVER')
 end
 
-def clear_terminal()                        # This code pushes everything above the last grid printed out of user view
+def clear_terminal()                                # This code pushes everything above the last grid printed out of user view
     puts "\e[H\e[2J"
 end
 
 def create_grid_arrays                        
-    $b_g = Array.new(101, " ")             # This creates the values 1-100 that correspond to the gridsquares. Position 0 is deliberately redundant.
-    $enemy_b_g = Array.new(101, " ")       # This creates values for the enemy fleet gridsquares. 
-    $hidden_enemy_b_g = Array.new(101, " ")       # This creates values for the enemy fleet gridsquares. 
+    $b_g = Array.new(101, " ")                      # This creates the values 1-100 that correspond to the gridsquares. Position 0 is deliberately redundant.
+    $enemy_b_g = Array.new(101, " ")                # This creates values for the enemy fleet gridsquares. 
+    $hidden_enemy_b_g = Array.new(101, " ")         # This creates values for the enemy fleet gridsquares. 
 end
 
-# This method is to give the computer a binary choice for orientating each of its ships:
 
-def h_or_v()                              
+# This is for the automatic fleet generation methods to return a binary choice for ship orientatation
+def h_or_v()                                        
     h_choice = rand(0..1)
     if h_choice == 0
         return "H"
@@ -45,13 +45,13 @@ def h_or_v()
 end
 
 # This method selects a random grid alpha numberic reference. This will be used by the computer to place its ships, and later to fire on the user fleet,
-
 def rand_gr()                               
     array_choice = REFERENCE_HASH.to_a
     guess = rand(0..99)
     return array_choice[guess][0]
 end
 
+# The method that contains the logic around the user shooting process:
 def user_fire
     puts "Enter the grid reference for your next shot:"
 
@@ -88,6 +88,7 @@ def user_fire
 
 end
 
+# The method that contains the logic around the computer shooting process:
 def computer_fire
 
     target_grid =          ["A1", "A2", "A3", "A4", "A5", "A6", "A7", "A8", "A9", "A10",

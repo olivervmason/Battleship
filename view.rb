@@ -72,6 +72,9 @@ def show_enemy_grid()
 
 end 
 
+# ----------------------------------------------------------------------------------------------
+
+# Build/show Enemy fleet grid WITHOUT the ships positions - i.e. the view presented to the user:
 
 def hidden_enemy_grid()
     clear_terminal()

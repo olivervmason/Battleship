@@ -1,3 +1,4 @@
+# This controller contains the Methods for the user to manually set their fleet position.
 
 def place_carrier() # This method is to place the first ship on the grid.
     
