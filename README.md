@@ -73,3 +73,29 @@ The app includes the following elements:
 
 - Using a terminal application inherently limits the functionality, especially with respect to graphics.
 - Whilst the game is fully functional, the computer is not smart when it comes to shooting, i.e. every shot is random and it will not follow up a hit with a shot at an adjacent square. 
+
+#### Screenshots from finished product:
+
+1. Login and setup fleet (manual or automatic choice):
+<img src="screenshots/1.png">
+
+2. Result of automatic home fleet setup:
+<img src="screenshots/2.png">
+
+3. Prompt to enter shot against enemy fleet:
+<img src="screenshots/3.png">
+
+4. Feedback on result of last shot:
+<img src="screenshots/4.png">
+
+5. Notification of opponents play, and the result:
+<img src="screenshots/5.png">
+
+6. View of the home fleet after taking the first hit
+<img src="screenshots/6.png">
+
+7. View of the target area - 1 hit ("X") and 1 miss ("O") so far...
+<img src="screenshots/7.png">
+
+8. View on completion of game:
+<img src="screenshots/8.png">
